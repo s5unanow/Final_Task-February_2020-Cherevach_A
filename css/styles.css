@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../fonts/OpenSans-Bold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../fonts/Roboto-Regular.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("../fonts/Roboto-Medium.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../fonts/Roboto-Bold.ttf") format("ttf");
+}
+
+:root {
+  --font-OpenSans-Bold: "OpenSans-Bold", sans-serif;
+  --font-Roboto-Regular: "Roboto-Regular", sans-serif;
+  --font-Roboto-Medium: "Roboto-Medium", sans-serif;
+  --font-Roboto-Bold: "Roboto-Bold", sans-serif;
+  --font-TimesNewRoman-Italic: "Times New Roman", serif;
+  /*  colors go here*/
+  --color--main-black: #000003;
+  --color--main-background-grey: #f7f7f7;
+  --color--secondary-background-grey: #c9cbcd;
+  --color--active: #f14a58;
+  --color--hover-item-overlay: rgba(0, 0, 0, .5);
+  --color--old-price: #999999;
+  --color-adidas-bg: #324063;
+  --color-repair-overlay: rgba(94, 102, 108, .3);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+.main-nav__items {
+  text-transform: capitalize;
+}
+
