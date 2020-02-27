@@ -43,7 +43,7 @@
     </div>
     <div class="header__burger-btn">
       <label><input type="checkbox" name="nav__toggle" id="nav__toggle">
-        <span class="toggle__icon"></span>
+        <span class="toggle__icon">&nbsp;</span>
       </label>
     </div>
     <nav class="header-nav">
@@ -74,9 +74,12 @@
   </header>
   <hr>
   <main class="container-main">
-    <section class="banner">
-      <div class="banner__img-container banner__img-nike">
-        <img src="img/banner-nike.png" alt="Nike Banner">
+    <section class="banners">
+      <div class="banner">
+        <h2 class="banner__name">Nike Red</h2>
+        <div class="banner__img-container banner__img-nike">
+          <img src="img/banner-nike-mobile.png" alt="Nike Banner">
+        </div>
       </div>
       <div class="banner__img-container banner__img-hats">
         <img src="img/banner-sale_hats.png" alt="Nike Banner">
@@ -88,7 +91,7 @@
         <h1 class="section__heading best-offer__heading">Best offer</h1>
         <p class="best-offer__text">This offer is valid in-store and online. Prices displayed reflect this additional discount. This offer ends at 11:59 GMT on March 1st 2019</p>
       </div>
-      <div class="best-offer__items">
+      <div class="best-offer__items items">
         <div class="best-offer__item item-new item">
           <div class="item__img">
             <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
@@ -111,11 +114,13 @@
         <div class="best-offer__old-price">
           £161.00
         </div>
-        <div class="best-offer__sign--equal">
-          =
-        </div>
-        <div class="best-offer__discounted-price">
-          £146.00
+        <div class="best-offer__discount">
+          <div class="best-offer__sign--equal">
+            =
+          </div>
+          <div class="best-offer__discount-price">
+            £146.00
+          </div>
         </div>
       </div>
       <div class="best-offer__cta">
@@ -125,7 +130,7 @@
     <hr>
     <section class="new-arrivals">
       <h1 class="section__heading new-arrivals__heading">New arrivals</h1>
-      <div class="new-arrivals__items">
+      <div class="new-arrivals__items items">
         <div class="new-arrivals__item item-new item">
           <div class="item__img">
             <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
