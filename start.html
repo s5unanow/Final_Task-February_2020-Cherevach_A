@@ -10,56 +10,75 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div class="container-img"></div>
 <div class="container">
   <header class="header-main">
     <div class="header-top">
       <div class="header-logo header-logo__tl">TL</div>
-      <div class="header-logo header-logo__template">Template</div>
-      <div class="header__bag">
-        <svg class="bag__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 27.82"><defs><style>.cls-1{fill:#fff;stroke:#000;stroke-miterlimit:10;stroke-width:1.42px;}</style></defs><title>Asset 2</title><path class="cls-1" d="M7.5,9.32c-.91-1.9.71-8.25,5.27-8.6s6.34,5.58,5.73,7.6C17.56,11.42,8.9,12.24,7.5,9.32Z"/><polygon points="0 27.82 5 7.82 21 7.82 26 27.82 0 27.82"/></svg>
-        <span class="bag__name">Bag</span>
-        <span class="bag__price"></span>
-        (<span class="bag__quantity">0</span>)
-      </div>
-      <div class="header__burger-btn">
-        <label><input type="checkbox" name="nav__toggle" id="nav__toggle">
-          <span class="toggle__icon"></span>
-        </label>
+      <div class="header-logo header-logo__full">Template</div>
+      <div class="header-top__right">
+        <div class="header__bag">
+          <svg class="bag__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 27.82">
+            <defs>
+              <style>.cls-1 {
+                fill: #fff;
+                stroke: #000;
+                stroke-miterlimit: 10;
+                stroke-width: 1.42px;
+              }</style>
+            </defs>
+            <title>Asset 2</title>
+            <path class="cls-1"
+                  d="M7.5,9.32c-.91-1.9.71-8.25,5.27-8.6s6.34,5.58,5.73,7.6C17.56,11.42,8.9,12.24,7.5,9.32Z"/>
+            <polygon points="0 27.82 5 7.82 21 7.82 26 27.82 0 27.82"/>
+          </svg>
+          <span class="bag__name">Bag</span>
+          <span class="bag__price"></span>
+          (<span class="bag__quantity">0</span>)
+        </div>
+        <div class="header-sign-up">
+          E-mail sing up
+        </div>
       </div>
     </div>
-    <nav class="main-nav">
-      <ul class="main-nav__items">
-        <li class="main-nav__item">
+    <div class="header__burger-btn">
+      <label><input type="checkbox" name="nav__toggle" id="nav__toggle">
+        <span class="toggle__icon"></span>
+      </label>
+    </div>
+    <nav class="header-nav">
+      <ul class="header-nav__items">
+        <li class="header-nav__item">
           <a href="#">Men</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">Handbags</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">Accessories</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">Sale</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">New arrivals</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">Clearance</a>
         </li>
-        <li class="main-nav__item">
+        <li class="header-nav__item">
           <a href="#">Store locator</a>
         </li>
       </ul>
     </nav>
   </header>
   <hr>
-  <main>
+  <main class="container-main">
     <section class="banner">
-      <div class="banner__img banner__img-nike">
+      <div class="banner__img-container banner__img-nike">
         <img src="img/banner-nike.png" alt="Nike Banner">
       </div>
-      <div class="banner__img banner__img-hats">
+      <div class="banner__img-container banner__img-hats">
         <img src="img/banner-sale_hats.png" alt="Nike Banner">
       </div>
     </section>

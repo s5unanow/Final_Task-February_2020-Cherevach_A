@@ -49,18 +49,100 @@ html {
   font-size: 62.5%;
 }
 
-.header-logo__template {
+.container {
+  position: relative;
+  min-width: 375px;
+  margin: 0 auto;
+}
+
+hr {
+  border: none;
+  background: #c9cbcd;
+  height: 1px;
+}
+
+/* checking for pixeling */
+.container-img::after {
+  content: "";
+  background: url("../img/test/1_start_375.png");
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  width: 375px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 10;
+}
+
+/* header section */
+.header-main {
+  margin: 20px 0 0 20px;
+}
+
+.header-top {
+  width: 79%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-logo__tl {
+  font-family: "OpenSans-Bold", sans-serif;
+  font-weight: bold;
+}
+
+.header-logo__tl {
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 2.4rem;
+}
+
+.header-logo__full {
   display: none;
 }
 
-.bag__img {
-  width: 20px;
-  height: 20px;
+.header-top__right {
+  font-size: 1.2rem;
+  font-family: "OpenSans-Bold", sans-serif;
 }
 
-.main-nav__items {
+.header__bag {
+  padding-top: 5px;
+}
+
+.bag__img {
+  width: 14px;
+  height: 14px;
+}
+
+.bag__name {
+  padding-left: 5px;
+}
+
+.header-sign-up {
+  display: none;
+}
+
+.header__burger-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.header-nav {
+  display: none;
+}
+
+.header-nav__item {
   text-transform: capitalize;
 }
+
+/* main section */
+.banner__img-container img {
+  width: 100%;
+}
+
+
 
 .banner__img-hats {
   display: none;
