@@ -123,16 +123,18 @@ hr {
   position: absolute;
   right: 20px;
   top: 0;
+
 }
 
 .nav__toggle-btn {
-  position: absolute;
+  position: fixed;
   right: 20px;
-  top: 0;
+  top: 20px;
   display: inline-block;
   width: 17px;
   height: 17px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 #nav__checkbox{
@@ -140,9 +142,14 @@ hr {
 }
 
 #nav__checkbox:checked ~ .header-top {
-  /*position: fixed;*/
-  /*top: 0;*/
-  /*left: 0;*/
+  position: fixed;
+  width: 100%;
+  padding: 20px 74px 22px 21px;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  background: white;
+  border-bottom: 1px solid #c9cbcd;
 }
 
 #nav__checkbox:checked ~ .header-nav {
@@ -305,6 +312,10 @@ hr {
   flex-basis: 33%;
 }
 
+.item {
+  position: relative;
+}
+
 .item__img img {
   width: 158px;
 }
@@ -359,10 +370,25 @@ hr {
 }
 
 .best-offer__discount {
-  margin: 20px 0 38px 0;
+  margin: 10px 0 38px 0;
   font-family: "Roboto-Bold", serif;
   font-size: 2.6rem;
   letter-spacing: .3px;
+}
+
+.best-offer__slide-up {
+  position: absolute;
+  left: 45%;
+  top: -45px;
+  fill: #f14a58;
+  cursor: pointer;
+}
+
+.best-offer__slide-down {
+  position: absolute;
+  left: 45%;
+  bottom: -50px;
+  fill: #f14a58;
 }
 
 .best-offer__btn  {
