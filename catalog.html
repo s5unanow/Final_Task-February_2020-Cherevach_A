@@ -92,41 +92,39 @@
   <main class="container-main">
     <section class="filter">
       <ul class="filter__params">
-        <li class="filter__param--set">Casual style</li>, <li class="filter__param--unset">Product type</li>, <li class="filter__param--unset">Color</li>, <li class="filter__param--set">Antipodium</li>, <li class="filter__param--unset">UK</li>
+        <li class="filter__param--fashion filter__param--set">Casual style</li>, <li class="filter__param--type">Product type</li>, <li class="filter__param--color">Color</li>, <li class="filter__param--brand filter__param--set">Antipodium</li>, <li class="filter__param--size">UK</li>, <li class="filter__param--price">Price</li>
       </ul>
-      <div class="filter__button-open">
-
-      </div>
+      <label for="filter__checkbox" class="filter__toggle-btn"><span class="filter__toggle-icon">⏷</span></label>
+      <input type="checkbox" name="filter__checkbox" id="filter__checkbox">
     </section>
     <section class="filter-desktop">
 
     </section>
     <hr>
-    <section class="new-arrivals">
-      <h1 class="section__heading new-arrivals__heading">New arrivals</h1>
-      <div class="new-arrivals__items items">
-        <div class="new-arrivals__item item-new item">
+    <section class="promo-last-weekend">
+      <div class="promo-last-weekend_items items">
+        <div class="promo-last-weekend__item item-new item">
           <div class="item__img">
             <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
           </div>
           <div class="item__name">Only Skinny Jeans</div>
           <div class="item__price">£65.50</div>
         </div>
-        <div class="new-arrivals__item item-new item">
+        <div class="promo-last-weekend__item item-new item">
           <div class="item__img">
             <img src="img/item-Neck_Knitted_Jumper.png" alt="Neck Knitted Jumper">
           </div>
           <div class="item__name">Neck Knitted Jumper</div>
           <div class="item__price">£76.25</div>
         </div>
-        <div class="new-arrivals__item item-new item">
+        <div class="promo-last-weekend__item item-new item">
           <div class="item__img">
             <img src="img/item-Turtle_Neck_Jumper_in_Rib.png" alt="Turtle Neck Jumper in Rib">
           </div>
           <div class="item__name">Turtle Neck Jumper in Rib</div>
           <div class="item__price">£130.25</div>
         </div>
-        <div class="new-arrivals__item item-new item">
+        <div class="promo-last-weekend__item item-new item">
           <div class="item__img">
             <img src="img/item-With_Patchwork_Crochet.png" alt="With Patchwork Crochet">
           </div>
@@ -134,19 +132,73 @@
           <div class="item__price">£80.60</div>
         </div>
       </div>
-      <div class="new-arrivals__cta">
-        <a href="#" class="new-arrivals__btn cta-btn">All arrivals</a>
+      <div class="promo__description">
+        <h1 class="section__heading promo__heading">Last weekend <span class="red-offer">extra 50%</span>
+          off on all reduced boots and
+          shoulder bags</h1>
+        <p class="promo__text">This offer is valid in-store and online. Prices displayed reflect this additional discount. This offer ends at 11:59 GMT on March 1st 2019</p>
+      </div>
+    </section>
+    <section class="catalog-main">
+      <div class="catalog-main__items items">
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Turtle Neck Jumper
+            in Rib</div>
+          <div class="item__price">£130.25</div>
+        </div>
+          <div class="catalog-main__item item-new item">
+            <div class="item__img">
+              <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+            </div>
+            <div class="item__name">With Patchwork Crochet</div>
+            <div class="item__price">£80.60</div>
+          </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Levi’s Jeans for women</div>
+          <div class="item__price">£95.50</div>
+        </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Boyfriend T-Shirt with
+            Bohemian Print</div>
+          <div class="item__price"><span class="old-price">£120.00</span>£80.60</div>
+        </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Colour Block</div>
+          <div class="item__price">£550.50</div>
+        </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Monki Festval Knitted</div>
+          <div class="item__price">£24.75</div>
+        </div>
+      </div>
+      <div class="catalog-main__cta">
+        <a href="#" class="catalog-main__btn cta-btn">Show more</a>
       </div>
     </section>
     <hr>
     <section class="banners">
-      <div class="banner banner__nike">
+      <div class="banner banner__adidas">
         <div class="banner__text">
-          <h2 class="banner__name">Nike Red</h2>
-          <p class="banner__text--extra">&nbsp;</p>
+          <h2 class="banner__name">Adidas Blue</h2>
+          <p class="banner__text--extra">For men</p>
         </div>
         <div class="banner__img-container">
-          <img class="banner__img-nike" src="img/banner-nike-mobile.png" alt="Nike Banner">
+          <img class="banner__img-adidas" src="img/2_catalog-banner-adidas.png" alt="Adidas">
         </div>
       </div>
       <div class="banner banner__hats">

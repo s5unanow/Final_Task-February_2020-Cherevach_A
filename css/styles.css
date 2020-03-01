@@ -437,12 +437,15 @@ hr {
   display: none;
 }
 
+
 .footer-main {
   display: none;
+  text-align: left;
 }
 
 .footer-main--mobile {
   margin-top: 35px;
+  text-align: left;
 }
 
 .footer__part-1 {
@@ -1257,18 +1260,141 @@ a:hover {
 
 .filter {
   position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
 }
 
 .filter__params {
-
+  padding: 18px 0 22px 30px;
+  font-family: 'OpenSans-Bold', sans-serif;
+  font-size: 13px;
+  letter-spacing: .4px;
+  white-space: nowrap;
 }
 
-.filter__param--unset {
-
+.filter__params li {
+  display: inline-block;
 }
 
-.filter__param--unset {
+.filter__param--set {
+  color: #f14a58;
+}
 
+#filter__checkbox {
+  display: none;
+}
+
+.filter__toggle-btn {
+  position: absolute;
+  right: -10px;
+  top: 0;
+  width: 70px;
+  height: 50px;
+  z-index: 500;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+}
+
+.filter__toggle-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.promo-last-weekend {
+  margin-top: 20px;
+}
+
+.promo-last-weekend__item:nth-child(3),
+.promo-last-weekend__item:nth-child(4) {
+  display: none;
+}
+
+.promo__heading {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 53px 58px 0 58px;
+}
+
+.red-offer {
+  color: #f14a58;
+}
+
+.promo__text {
+  margin: 16px 45px 65px 45px;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+.catalog-main {
+  margin-bottom: 100px;
+}
+
+.catalog-main__items {
+  align-items: normal;
+  flex-wrap: wrap;
+}
+
+.catalog-main__item {
+  margin-bottom: 50px;
+}
+
+.catalog-main__item .item__name{
+  margin: 30px auto 0;
+  width: 140px;
+  line-height: 1.5;
+}
+
+.catalog-main__item .item__price {
+  margin-top: 12px;
+}
+
+.old-price {
+  position: relative;
+  display: inline-block;
+  margin-right: 7px;
+  color: #757575;
+}
+
+.old-price::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background: #f14a58;
+  transform: rotate(-30deg);
+}
+
+.catalog-main__btn {
+  margin-top: 15px;
+  font-size: 18px;
+  padding: 20px 57px;
+}
+
+.banner__adidas .banner__text{
+  color: white;
+  right: 11%;
+  bottom: 65%;
+}
+
+.banner__adidas .banner__name {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.banner__adidas .banner__text--extra {
+  text-align: center;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.banner__img-container {
+  margin-bottom: -2px;
 }
 
 @media (min-width: 768px) {
