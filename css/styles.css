@@ -53,7 +53,7 @@ html {
   min-width: 375px;
   margin: 0 auto;
   max-width: 1440px;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 hr {
@@ -67,13 +67,13 @@ hr {
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/2_catalog_375.png");
+  background: url("../img/test/2_catalog_768.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
   top: 0;
   left: 0;
-  width: 375px;
+  width: 768px;
   bottom: 0;
   right: 0;
   position: absolute;
@@ -1254,6 +1254,14 @@ a:hover {
 
 /* CATALOG */
 
+.catalog__container-main {
+  text-align: center;
+}
+
+.filter {
+  text-align: left;
+}
+
 .filter-desktop {
   display: none;
 }
@@ -1310,10 +1318,14 @@ a:hover {
   display: none;
 }
 
+.catalog-main__items .item:nth-child(n+7) {
+  display: none;
+}
+
 .promo__heading {
   font-size: 18px;
   line-height: 1.6;
-  margin: 53px 58px 0 58px;
+  margin: 53px 50px 0;
 }
 
 .red-offer {
@@ -1399,6 +1411,102 @@ a:hover {
 
 @media (min-width: 768px) {
 
+  .filter__params {
+    padding: 25px 0 24px 49px;
+    font-size: 14px;
+  }
+
+  .filter__toggle-btn {
+    right: 176px;
+    top: 6px;
+    background: transparent;
+  }
+
+  .promo-last-weekend__item:nth-child(3) {
+    display: block;
+  }
+
+  .promo-last-weekend {
+    margin-top: 37px;
+  }
+
+  .promo-last-weekend__items {
+    width: 95%;
+  }
+
+  .promo__heading {
+    margin: 77px 140px 0;
+    font-size: 20px;
+  }
+
+  .promo__text {
+    margin: 11px 95px 91px;
+    font-size: 16px;
+  }
+
+  .catalog-main__items .item:nth-child(-n+9) {
+    display: block;
+  }
+
+  .catalog-main__item .item__name {
+    margin: 37px auto 0;
+    width: 165px;
+  }
+
+  .catalog-main__item {
+    margin-bottom: 82px;
+  }
+
+  .old-price::after {
+    top: 7px;
+    left: -2px;
+    width: 60px;
+  }
+
+  .catalog-main__btn {
+    margin-top: -6px;
+    font-size: 20px;
+    padding: 22px 72px;
+  }
+
+  .catalog__banners {
+    overflow: hidden;
+    height: 32.5vw;
+  }
+
+
+  .banner__adidas {
+    flex-basis: 66.6%;
+    border-right: 1px solid #c9cbcd;
+  }
+
+  .banner__adidas .banner__text {
+    right: 12%;
+    bottom: 67%;
+  }
+
+  .banner__adidas .banner__name {
+    font-size: 22px;
+  }
+
+  .banner__adidas .banner__text--extra {
+    font-size: 16px;
+  }
+
+  .banner__repair {
+    flex-basis: 33%;
+  }
+
+  .banner__repair .banner__text{
+    right: 15%;
+    bottom: 11%;
+    color: white;
+  }
+
+  .banner__repair .banner__text--repair {
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 1024px) {
