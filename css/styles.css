@@ -15,22 +15,22 @@
   src: url("../fonts/Roboto-Bold.ttf");
 }
 
-:root {
-  --font-OpenSans-Bold: "OpenSans-Bold", sans-serif;
-  --font-Roboto-Regular: "Roboto-Regular", sans-serif;
-  --font-Roboto-Medium: "Roboto-Medium", sans-serif;
-  --font-Roboto-Bold: "Roboto-Bold", sans-serif;
-  --font-TimesNewRoman-Italic: "Times New Roman", serif;
-  /*  colors go here*/
-  --color--main-black: #000003;
-  --color--main-background-grey: #f7f7f7;
-  --color--secondary-background-grey: #c9cbcd;
-  --color--active: #f14a58;
-  --color--hover-item-overlay: rgba(0, 0, 0, .5);
-  --color--old-price: #999999;
-  --color-adidas-bg: #324063;
-  --color-repair-overlay: rgba(94, 102, 108, .3);
-}
+/*:root {*/
+/*  --font-OpenSans-Bold: "OpenSans-Bold", sans-serif;*/
+/*  --font-Roboto-Regular: "Roboto-Regular", sans-serif;*/
+/*  --font-Roboto-Medium: "Roboto-Medium", sans-serif;*/
+/*  --font-Roboto-Bold: "Roboto-Bold", sans-serif;*/
+/*  --font-TimesNewRoman-Italic: "Times New Roman", serif;*/
+/*  !*  colors go here*!*/
+/*  --color--main-black: #000003;*/
+/*  --color--main-background-grey: #f7f7f7;*/
+/*  --color--secondary-background-grey: #c9cbcd;*/
+/*  --color--active: #f14a58;*/
+/*  --color--hover-item-overlay: rgba(0, 0, 0, .5);*/
+/*  --color--old-price: #999999;*/
+/*  --color-adidas-bg: #324063;*/
+/*  --color-repair-overlay: rgba(94, 102, 108, .3);*/
+/*}*/
 
 * {
   margin: 0;
@@ -63,12 +63,12 @@ hr {
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/1_start_768.png");
+  background: url("../img/test/1_start_1300.png");
   background-repeat: no-repeat;
   opacity: .15;
   top: 0;
   left: 0;
-  width: 768px;
+  width: 1300px;
   bottom: 0;
   right: 0;
   position: absolute;
@@ -269,10 +269,13 @@ hr {
   position: relative;
 }
 
-.banner__name {
+.banner__text {
   position: absolute;
   right: 14%;
-  bottom: 75%;
+  bottom: 71%;
+}
+
+.banner__name {
   font-family: "OpenSans-Bold", sans-serif;
   font-size: 22px;
   letter-spacing: .5px;
@@ -322,7 +325,7 @@ hr {
 }
 
 .item__name {
-  margin-top: 35px;
+  margin-top: 31px;
   font-family: "Roboto-Bold", serif;
   font-size: 1.2rem;
   letter-spacing: .3px;
@@ -336,7 +339,7 @@ hr {
 }
 
 .best-offer__checkout-price {
-  margin-top: 80px;
+  margin-top: 72px;
 }
 
 .best-offer__sign--plus {
@@ -371,7 +374,7 @@ hr {
 }
 
 .best-offer__discount {
-  margin: 10px 0 38px 0;
+  margin: 10px 0 26px 0;
   font-family: "Roboto-Bold", serif;
   font-size: 2.6rem;
   letter-spacing: .3px;
@@ -388,12 +391,11 @@ hr {
 .best-offer__slide-down {
   position: absolute;
   left: 45%;
-  bottom: -50px;
+  bottom: -42px;
   fill: #f14a58;
 }
 
 .best-offer__btn  {
-  margin-top: 35px;
   padding: 27px 55px;
   font-size: 2rem;
 }
@@ -407,16 +409,16 @@ hr {
 }
 
 .new-arrivals {
-  margin: 120px 0 93px 0;
+  margin: 92px 0 97px 0;
   text-align: center;
 }
 
 .new-arrivals__heading {
-  margin-bottom: 65px;
+  margin-bottom: 71px;
 }
 
 .new-arrivals__btn {
-  margin-top: 75px;
+  margin-top: 65px;
   padding: 23px 55px;
   font-size: 1.8rem;
 }
@@ -435,7 +437,7 @@ hr {
 }
 
 .footer__part-1 {
-  margin-bottom: 65px;
+  margin-bottom: 40px;
 }
 
 .footer-groups {
@@ -445,7 +447,7 @@ hr {
 
 .footer-group {
   flex-basis: 45%;
-  margin-left: 5%;
+  margin-left: 6%;
 }
 
 .footer-title {
@@ -459,7 +461,7 @@ hr {
 }
 
 .footer-list li {
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 .footer-list a {
@@ -470,11 +472,17 @@ hr {
 }
 
 .footer__part-2 .footer-group {
-  padding: 23px 0 45px 0;
+  padding: 23px 0 43px 0;
 }
 
 .contacts__twitter {
   border-right: 1px solid #c9cbcd;
+}
+
+/* footer section */
+
+.footer-main--tablet {
+  display: none;
 }
 
 .footer__part-2 .twitter,
@@ -503,7 +511,7 @@ hr {
 .footer__part-3,
 .footer-part-4{
   position: relative;
-  margin: 28px 17px 28px 17px;
+  margin: 25px 20px 28px 20px;
 }
 
 .footer__privacy {
@@ -519,8 +527,8 @@ hr {
 
 .footer__social {
   position: absolute;
-  right: 0;
-  top: -10px;
+  right: 2px;
+  top: -8px;
 }
 
 .footer__social svg {
@@ -595,7 +603,8 @@ a:hover {
   color: #f14a58;
 }
 
-@media (min-width: 768px) {
+/* TABLET layout */
+@media screen and (min-width: 768px) {
   html {
     font-size: 67.7%;
   }
@@ -696,13 +705,31 @@ a:hover {
 
   .banners {
     display: flex;
-    margin-bottom: -2px;
+    margin-bottom: -1px;
   }
   .banner {
     flex: 1;
   }
+
+  .banner__text {
+    right: 15%;
+    bottom: 62%;
+  }
+
+  .banner__name {
+    margin-bottom: 8px;
+  }
+
+  .banner__text--extra {
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+
   .banner__hats {
     display: block;
+    border-left: 1px solid #c9cbcd;
   }
 
   .banner__img-nike {
@@ -756,7 +783,7 @@ a:hover {
   .best-offer__checkout-price {
     margin-top: 0;
     position: relative;
-    top: -40px;
+    top: -48px;
     left: 75px;
   }
 
@@ -801,6 +828,7 @@ a:hover {
   }
 
   .new-arrivals__btn {
+    margin-top: 75px;
     padding: 21px 94px;
     font-size: 20px;
     letter-spacing: .6px;
@@ -812,6 +840,10 @@ a:hover {
 
   /* end main -- start footer */
 
+  .footer-main--tablet {
+    display: block;
+  }
+
   .footer-main--mobile {
     display: none;
   }
@@ -822,6 +854,7 @@ a:hover {
 
   .footer__part-1 {
     width: 89%;
+    margin-bottom: 104px;
   }
 
   .footer-group {
@@ -851,6 +884,13 @@ a:hover {
 
   .contacts__twitter {
     border: none;
+    position: relative;
+  }
+
+  .footer__social {
+    top: 230px;
+    left: -15px;
+    right: unset;
   }
 
   .icon-twitter svg {
@@ -868,10 +908,188 @@ a:hover {
   .footer__contacts .contacts__phone {
     margin-top: 37px;
   }
+
+  .footer__part-2 {
+    position: relative;
+    margin: 0 40px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+    letter-spacing: .4px;
+  }
+
+  .footer__privacy {
+    margin-right: -15px;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .footer__share {
+    position: static;
+    margin-top: -5px;
+    font-size: 16px;
+  }
+
+  .footer__share--counter {
+    font-size: 12px;
+  }
+
 }
 
+/* DESKTOP layout */
 @media (min-width: 1024px) {
+  /* header */
+
+  .header-main {
+    margin: 25px 56px 22px 60px;
+  }
+
+  .header-logo__full {
+    font-size: 30px;
+  }
+
+  .header-top__right {
+    margin-top: 3px;
+  }
+
+  .header-top {
+    margin-bottom: 22px;
+  }
+
+  .header-nav {
+    margin-left: 2px;
+  }
+
+  .header-nav__item {
+    margin-right: 60px;
+  }
+
+  .header-nav a {
+    font-size: 13px;
+    letter-spacing: .5px;
+  }
+
+  .header-nav__search {
+    top: -3px;
+    right: -3px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .search__input {
+    display: inline-block;
+    width: 124px;
+    border: none;
+  }
+
+  .search__icon {
+    margin-bottom: -3px;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* header end -- main start */
+
+  .banner__text {
+    right: 15.5%;
+    bottom: 68%;
+  }
+  .banner__name {
+    margin-bottom: 11px;
+    font-size: 28px;
+  }
+
+  .best-offer {
+    margin-top: 90px;
+  }
+
+  .best-offer__text {
+    margin-bottom: 118px;
+  }
+
+  .best-offer__items {
+    flex-basis: 57.5%;
+    margin: 0 0 0 13px;
+  }
+
+  .item__img img {
+    width: 240px;
+  }
+
+  .item-new::after {
+    top: 3%;
+    left: 3px;
+  }
+
+  .section__heading {
+    font-size: 50px;
+  }
+
+  .best-offer {
+    position:  relative;
+    margin-bottom: 155px;
+  }
+
+  .best-offer__checkout-price {
+    top: -53px;
+    left: 244px;
+  }
+
+  .best-offer__old-price {
+    left: -72px;
+    font-size: 26px;
+  }
+
+  .best-offer__old-price::after {
+    top: 6px;
+    left: 0;
+    width: 105px;
+  }
+
+  .best-offer__discount {
+    font-size: 34px;
+  }
+
+  .best-offer__sign--equal {
+    left: -158%;
+  }
+
+  .cta-btn {
+    font-size: 24px;
+  }
+
+  .best-offer__cta {
+    position: absolute;
+    bottom: 92px;
+    right: 59px;
+  }
+
+  .best-offer__btn {
+    padding: 24px 105px;
+  }
+
+  .new-arrivals__heading {
+    margin-bottom: 92px;
+  }
+
+  .new-arrivals__items {
+    width: 96%;
+  }
+
+  .new-arrivals__item .item__name{
+    margin-top: 46px;
+  }
+
   .new-arrivals__item:nth-child(4) {
     display: block;
+  }
+
+  .new-arrivals__btn {
+    margin-top: 72px;
+    padding: 22px 101px;
   }
 }
