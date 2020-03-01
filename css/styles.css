@@ -73,7 +73,7 @@ hr {
   right: 0;
   position: absolute;
   z-index: 1000;
-  height: 2684px;
+  height: 2849px;
 }
 
 /* header section */
@@ -848,6 +848,10 @@ a:hover {
     display: none;
   }
 
+  .footer__delivery-assurance {
+    display: none;
+  }
+
   .footer-main--tablet {
     margin-top: 50px;
   }
@@ -1091,5 +1095,73 @@ a:hover {
   .new-arrivals__btn {
     margin-top: 72px;
     padding: 22px 101px;
+  }
+
+  /* Footer start */
+
+  .footer-main--tablet {
+    margin-top: 56px;
+  }
+
+  .footer__part-1 {
+    width: 92%;
+    margin-bottom: 82px;
+  }
+
+  .footer__quick-links {
+    flex: 1;
+  }
+
+  .footer__customer-care {
+    flex: 2;
+    margin-left: 85px;
+  }
+
+  .footer-list {
+    margin-top: 48px;
+  }
+
+  .footer__contacts {
+    margin-left: 1%;
+    flex: 3;
+    display: flex;
+  }
+
+  .footer__contacts .contacts__phone {
+    margin-top: 0;
+    margin-left: 44px;
+  }
+
+  .footer__delivery-assurance {
+    display: block;
+    position: absolute;
+    top: 120px;
+    width: 310px;
+    color: #757575;
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 2;
+  }
+
+  .footer__social {
+    top: 245px;
+  }
+
+  .footer__part-2 {
+    margin: 33px 60px 33px 60px;
+  }
+
+  .footer__share {
+    font-size: 18px;
+    padding-left: 30px;
+  }
+
+  .footer__privacy {
+    margin-right: -35px;
+  }
+
+  .footer__privacy li {
+    margin-right: 35px;
   }
 }
