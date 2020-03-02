@@ -1,15 +1,107 @@
-.bag-title {
-
+.section__bag-title {
+  margin: 17px 0 18px 29px;
 }
 
 .bag-title__text {
   font-size: 18px;
 }
 
-.bag-main {
-
+.section__bag-main {
+  margin: 15px 0 0 0;
 }
 
 .bag-main__items {
+  display: flex;
+  flex-direction: column;
+}
 
+.bag-main__item {
+  margin-bottom: 40px;
+  margin-left: 19px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.item__img {
+  flex: 1;
+}
+
+.item__view-item--hover {
+  position: absolute;
+  display: none;
+  width: 90%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 1000;
+}
+
+.item__img:hover  .item__view-item--hover{
+  display: block;
+}
+
+.item__view-item--text {
+  position: absolute;
+  top: 38%;
+  left: 23%;
+  z-index: 3000;
+  width: 90%;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 20px;
+  color: #f14a58;
+  opacity: 1;
+}
+
+.item__data {
+  margin-left: 5px;
+  flex: 1;
+}
+
+.bag-main__item .item__name {
+  margin-top: 11px;
+  width: 60%;
+  line-height: 1.5;
+}
+
+.bag-main__item .item__price {
+  margin-top: 9px;
+  font-family: "Roboto-Bold", serif;
+  font-size: 1.4rem;
+}
+
+.bag-main__item .item__color,
+.bag-main__item .item__size,
+.bag-main__item .item__quantity {
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 10px;
+  letter-spacing: .4px;
+}
+
+.bag-main__item .item__color {
+  margin-top: 30px;
+}
+
+.bag-main__item .item__size {
+  margin-top: 10px;
+}
+
+.bag-main__item .item__quantity {
+  margin-top: 2px;
+}
+
+span[class^="item__quantity--"] {
+  position: relative;
+  top: 2px;
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 16px;
+  color: #f14a58;
+  cursor: pointer;
+}
+
+.item__remove-btn {
+  margin-top: 30px;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 11px;
+  letter-spacing: .3px;
+  color: #f14a58;
+  cursor: pointer;
 }
