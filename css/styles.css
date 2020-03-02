@@ -418,6 +418,11 @@ hr {
   text-decoration: none;
 }
 
+.cta-btn:hover {
+  color: #f14a58;
+  border: 1px solid #f14a58;
+}
+
 .new-arrivals {
   margin: 92px 0 97px 0;
   text-align: center;
@@ -622,6 +627,10 @@ a:hover {
     font-size: 67.7%;
   }
 
+  .catalog__container-main {
+    margin: 0 auto;
+  }
+
   .header-main {
     margin-top: 29px;
     margin-left: 40px;
@@ -741,6 +750,11 @@ a:hover {
   }
 
   /*header end --- start main*/
+
+  .section-short {
+    margin: 0 auto;
+    max-width: 1180px;
+  }
 
   .banners {
     display: flex;
@@ -1530,7 +1544,7 @@ a:hover {
   }
 
   .filter__categories {
-    margin: 0 4% 0 6%;
+    margin: 0 -2% 0 1.5%;
     display: flex;
   }
 
@@ -1614,7 +1628,7 @@ a:hover {
   }
 
   .promo-last-weekend__items {
-    width: 91%;
+    width: 100%;
   }
 
   .promo-last-weekend__item .item__name{
@@ -1627,6 +1641,10 @@ a:hover {
 
   .promo__text {
     margin: 8px 95px 91px;
+  }
+
+  .catalog-main__items {
+    width: 100%;
   }
 
   .catalog-main__items .item:nth-child(n+9) {
@@ -1691,5 +1709,8 @@ a:hover {
 }
 
 @media (min-width: 1300px) {
-
+  .catalog__banners {
+    height: 384px;
+  }
 }
+
