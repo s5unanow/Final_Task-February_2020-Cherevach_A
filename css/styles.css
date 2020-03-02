@@ -68,18 +68,18 @@ hr {
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/2_catalog_1300.png");
+  background: url("../img/test/3_item_375.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
   top: 0;
   left: 0;
-  width: 1300px;
+  width: 375px;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: 1000;
-  height: 2849px;
+  height: 1846px;
 }
 
 /* header section */
