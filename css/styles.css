@@ -62,18 +62,19 @@ hr {
   border: none;
   height: 1px;
   background: #c9cbcd;
+  position: relative;
 }
 
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/2_catalog_768.png");
+  background: url("../img/test/2_catalog_1300.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
   top: 0;
   left: 0;
-  width: 768px;
+  width: 1300px;
   bottom: 0;
   right: 0;
   position: absolute;
@@ -988,7 +989,7 @@ a:hover {
   /* header */
 
   .header-main {
-    margin: 25px 56px 22px 60px;
+    margin: 25px 56px 24px 60px;
     max-width: 1180px;
   }
 
@@ -1009,7 +1010,7 @@ a:hover {
   }
 
   .header-nav__item {
-    margin-right: 3vw;
+    margin-right: 4.6vw;
   }
 
   .header-nav a {
@@ -1020,7 +1021,7 @@ a:hover {
   .header-nav__search {
     top: -3px;
     right: -3px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
     border-bottom: 1px solid #e5e5e5;
   }
 
@@ -1387,6 +1388,11 @@ a:hover {
   padding: 20px 57px;
 }
 
+.banner__repair,
+.banner__sale {
+  display: none;
+}
+
 .banner__adidas .banner__text{
   color: white;
   right: 11%;
@@ -1494,6 +1500,7 @@ a:hover {
   }
 
   .banner__repair {
+    display: block;
     flex-basis: 33%;
   }
 
@@ -1511,15 +1518,178 @@ a:hover {
 
 @media (min-width: 1024px) {
 
-}
+  .filter-mobile {
+    display: none;
+  }
 
-@media (min-width: 1300px) {
   .filter-desktop {
     display: block;
     position: relative;
+    font-family: "OpenSans-Bold", sans-serif;
+    overflow: visible;
   }
 
-  .filter {
+  .filter__categories {
+    margin: 0 4% 0 6%;
+    display: flex;
+  }
+
+  .filter__category {
+    padding: 21px 0 22px;
+    flex: 1;
+    position: relative;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .filter__category--unset {
+    font-size: 16px;
+    position: relative;
+    z-index: 1901;
+  }
+
+  .filter__category--set {
+    background: #f7f7f7;
+    position: absolute;
+    left: -17px;
+    top: -1px;
+    display: none;
+    width: 100.5%;
+    z-index: 1905;
+  }
+
+  .filter__category--type {
+    padding-top: 11px;
+    padding-left: 18px;
+    font-size: 12px;
+  }
+
+  .filter__category--value {
+    padding: 10px 0 10px 18px;
+    font-size: 16px;
+    color: #f14a58;
+  }
+
+  .filter__list {
+    position: absolute;
+    width: 102%;
+    top: -2px;
+    left: -18px;
+    padding-top: 67px;
+    display: none;
+    list-style: none;
+    font-size: 12px;
+    background: white;
+    z-index: 1900;
+    border: 1px solid #c9cbcd;
+    box-shadow: 0 10px 13px 2px rgba(0,0,0,0.1);;
+  }
+
+  .filter__category:hover .filter__list{
+    display: block;
+  }
+
+  .filter__list li {
+    margin-bottom: 18px;
+    margin-left: 18px;
+  }
+
+  .filter__list li:hover {
+    color: #f14a58;
+  }
+
+  .filter__dropdown-arrow {
+    position: absolute;
+    top: 39%;
+    right: 19%;
+    z-index: 1910;
+  }
+
+  .promo-last-weekend__item:nth-child(4) {
+    display: block;
+  }
+
+  .promo-last-weekend {
+    margin-top: 61px;
+  }
+
+  .promo-last-weekend__items {
+    width: 91%;
+  }
+
+  .promo-last-weekend__item .item__name{
+    margin-top: 47px
+  }
+
+  .promo__heading {
+    font-size: 24px;
+  }
+
+  .promo__text {
+    margin: 8px 95px 91px;
+  }
+
+  .catalog-main__items .item:nth-child(n+9) {
     display: none;
   }
+
+  .catalog-main__item .item__name {
+    margin: 45px auto 0;
+  }
+
+  .catalog-main__btn {
+    margin-top: -6px;
+    font-size: 24px;
+    padding: 23px 102px;
+  }
+
+  .catalog__banners {
+    height: 29.5vw;
+  }
+
+  .banner__adidas {
+    flex-basis: 50%;
+  }
+
+  .banner__adidas .banner__text {
+    bottom: 69%;
+  }
+
+  .banner__adidas .banner__name {
+    font-size: 28px;
+  }
+
+  .banner__repair {
+    flex-basis: 25%;
+  }
+
+  .banner__repair .banner__text {
+    right: 17%;
+    bottom: 13%;
+  }
+
+  .banner__sale {
+    display: block;
+    flex-basis: 25%;
+  }
+
+  .banner__sale .banner__text {
+    right: 41%;
+    bottom: 13%;
+  }
+
+  .banner__sale .banner__name {
+    color: #f14a58;
+  }
+
+  .banner__text--sale {
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #757575;
+  }
+}
+
+@media (min-width: 1300px) {
+
 }

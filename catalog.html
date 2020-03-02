@@ -90,15 +90,136 @@
   </header>
   <hr>
   <main class="catalog__container-main">
-    <section class="filter">
+    <section class="filter-mobile filter">
       <ul class="filter__params">
-        <li class="filter__param--fashion filter__param--set">Casual style</li>, <li class="filter__param--type">Product type</li>, <li class="filter__param--color">Color</li>, <li class="filter__param--brand filter__param--set">Antipodium</li>, <li class="filter__param--size">UK 18</li>, <li class="filter__param--price">Price range</li>
+        <li class="filter__param--fashion filter__param--set">Casual style</li>, <li class="filter__param--product-type">Product type</li>, <li class="filter__param--color">Color</li>, <li class="filter__param--brand filter__param--set">Antipodium</li>, <li class="filter__param--size">UK 18</li>, <li class="filter__param--price">Price range</li>
       </ul>
       <label for="filter__checkbox" class="filter__toggle-btn"><span class="filter__toggle-icon">⏷</span></label>
       <input type="checkbox" name="filter__checkbox" id="filter__checkbox">
     </section>
     <section class="filter-desktop filter">
-
+      <div class="filter__categories">
+        <div class="filter__category filter__category--fashion">
+          <div class="filter__category--unset">
+            Fashion
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Fashion</div>
+            <div class="filter__category--value">Classical style</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">Nail the 90s</li>
+            <li class="filter__value">Casual style</li>
+            <li class="filter__value">New Look</li>
+            <li class="filter__value">Sport</li>
+            <li class="filter__value">Vintage</li>
+            <li class="filter__value">Classical style</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+        <div class="filter__category filter__category--product-type">
+          <div class="filter__category--unset">
+            Product type
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Product type</div>
+            <div class="filter__category--value">Not selected</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">Coats & Jackets</li>
+            <li class="filter__value">Dresses</li>
+            <li class="filter__value">Jersey Tops</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+        <div class="filter__category filter__category--color">
+          <div class="filter__category--unset">
+            Color
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Color</div>
+            <div class="filter__category--value">Not selected</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">Black</li>
+            <li class="filter__value">Blue</li>
+            <li class="filter__value">Red</li>
+            <li class="filter__value">Green</li>
+            <li class="filter__value">Golden</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+        <div class="filter__category filter__category--brand">
+          <div class="filter__category--unset">
+            Brand
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Brand</div>
+            <div class="filter__category--value">Not selected</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">Chi Chi London</li>
+            <li class="filter__value">Antipodium</li>
+            <li class="filter__value">Adidas</li>
+            <li class="filter__value">New Balance</li>
+            <li class="filter__value">River Island</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+        <div class="filter__category filter__category--size">
+          <div class="filter__category--unset">
+            Size
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Size</div>
+            <div class="filter__category--value">Not selected</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">UK 2</li>
+            <li class="filter__value">UK 18</li>
+            <li class="filter__value">UK 18L</li>
+            <li class="filter__value">UK 20</li>
+            <li class="filter__value">UK 20L</li>
+            <li class="filter__value">UK 20S</li>
+            <li class="filter__value">UK 22S</li>
+            <li class="filter__value">UK 22</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+        <div class="filter__category filter__category--price-range">
+          <div class="filter__category--unset">
+            Price range
+          </div>
+          <div class="filter__category--set">
+            <div class="filter__category--type">Price range</div>
+            <div class="filter__category--value">Not selected</div>
+          </div>
+          <ul class="filter__list">
+            <li class="filter__value">Not selected</li>
+            <li class="filter__value">To £99</li>
+            <li class="filter__value">£100-£299</li>
+            <li class="filter__value">From £300</li>
+          </ul>
+          <div class="filter__dropdown-arrow">
+            ⏷
+          </div>
+        </div>
+      </div>
     </section>
     <hr>
     <section class="promo-last-weekend">
@@ -230,6 +351,15 @@
         </div>
         <div class="banner__img-container">
           <img class="banner__img-repair" src="img/2_catalog-banner-repair.jpg" alt="Repair">
+        </div>
+      </div>
+      <div class="banner banner__sale">
+        <div class="banner__text">
+          <h2 class="banner__name">Sale</h2>
+          <p class="banner__text--sale">-70%</p>
+        </div>
+        <div class="banner__img-container">
+          <img class="banner__img-sale" src="img/2_catalog-banner-sale.jpg" alt="Sale">
         </div>
       </div>
     </section>
