@@ -5,10 +5,10 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Item</title>
+  <title>Catalog</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/item.css">
+  <link rel="stylesheet" href="css/shopping-bag.css">
 </head>
 <body>
 <div class="container">
@@ -90,100 +90,52 @@
     </nav>
   </header>
   <hr>
-  <main class="item__container-main">
-    <section class="section__back-to-catalog">
-      <a href="#" class="btn-back">< Back to catalog</a>
+  <main class="bag__container-main">
+    <section class="bag-title">
+      <h1 class="bag-title__text section__heading">
+        Shopping bag
+      </h1>
     </section>
-    <hr>
-    <section class="section-short section-item">
-      <div class="item__view">
-        <div class="item__img">
-          <img id="item__preview" src="img/3_item-view-1.jpg" alt="Suit view 1">
+    <section class="section-short bag-main">
+      <div class="bag-main__items items">
+        <div class="bag-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Turtle Neck Jumper
+            in Rib</div>
+          <div class="item__price">£130.25</div>
         </div>
-        <div class="item__thumbnails">
-          <img src="img/3_item-view-1.jpg" alt="Suit thumbnail 1" class="item__thumbnail item__thumbnail-1">
-          <img src="img/3_item-view-2.jpg" alt="Suit thumbnail 2" class="item__thumbnail item__thumbnail-2">
-          <img src="img/3_item-view-3.jpg" alt="Suit thumbnail 3" class="item__thumbnail item__thumbnail-3">
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">With Patchwork Crochet</div>
+          <div class="item__price">£80.60</div>
+        </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Levi’s Jeans for women</div>
+          <div class="item__price">£95.50</div>
+        </div>
+        <div class="catalog-main__item item-new item">
+          <div class="item__img">
+            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+          </div>
+          <div class="item__name">Boyfriend T-Shirt with
+            Bohemian Print</div>
+          <div class="item__price"><span class="old-price">£120.00</span>£80.60</div>
         </div>
       </div>
-      <div class="item__info">
-        <div class="item__description">
-          <div class="description__heading">
-            Dark classic fit suit
-          </div>
-          <div class="description__price">
-            £180.60
-          </div>
-          <div class="description__text">
-            Featuring fine Italian wool, this elegant suit has pick-stitch edging, cascade buttons at the cuffs and a
-            subtle stripe pattern throughout.
-          </div>
-        </div>
-        <div class="item__parameters">
-          <div class="parameter parameter__sizes">
-            <div class="size__label parameter__label">Size:</div>
-            <div class="parameter__value">
-              <input type="radio" name="size" id="size-uk52">
-              <label for="size-uk52">UK 52</label>
-            </div>
-            <div class="parameter__value">
-              <input type="radio" name="size" id="size-uk54">
-              <label for="size-uk54">UK 54</label>
-            </div>
-            <div class="parameter__value">
-              <input type="radio" name="size" id="size-uk56">
-              <label for="size-uk56">UK 56</label>
-            </div>
-          </div>
-          <div class="parameter parameter__colors">
-            <div class="color__label parameter__label">Color:</div>
-            <div class="parameter__value">
-              <input type="radio" name="color" id="color-black">
-              <label for="color-black">Black</label>
-            </div>
-            <div class="parameter__value">
-              <input type="radio" name="color" id="color-blue">
-              <label for="color-blue">Blue</label>
-            </div>
-          </div>
-        </div>
-        <div class="item-buy__cta">
-          <a href="#" class="item-buy__btn cta-btn">Add to bag</a>
-        </div>
+      <div class="catalog-main__cta">
+        <a href="#" class="catalog-main__btn cta-btn">Show more</a>
       </div>
     </section>
     <hr>
-    <section class="banners item__banners catalog__banners">
-      <div class="banner banner__adidas">
-        <div class="banner__text">
-          <h2 class="banner__name">Adidas Blue</h2>
-          <p class="banner__text--extra">For men</p>
-        </div>
-        <div class="banner__img-container">
-          <img class="banner__img-adidas" src="img/2_catalog-banner-adidas-big.jpg" alt="Adidas">
-        </div>
-      </div>
-      <div class="banner banner__repair">
-        <div class="banner__text">
-          <h2 class="banner__name">Repair patches</h2>
-          <p class="banner__text--repair">£150.50</p>
-        </div>
-        <div class="banner__img-container">
-          <img class="banner__img-repair" src="img/2_catalog-banner-repair.jpg" alt="Repair">
-        </div>
-      </div>
-      <div class="banner banner__sale">
-        <div class="banner__text">
-          <h2 class="banner__name">Sale</h2>
-          <p class="banner__text--sale">-70%</p>
-        </div>
-        <div class="banner__img-container">
-          <img class="banner__img-sale" src="img/2_catalog-banner-sale.jpg" alt="Sale">
-        </div>
-      </div>
-    </section>
   </main>
-  <hr>
+
 
   <footer class="footer-main--tablet">
     <div class="footer-groups footer__part-1">

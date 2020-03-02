@@ -68,7 +68,7 @@ hr {
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/3_item_375.png");
+  background: url("../img/test/4_shopping_bag_375.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
@@ -79,7 +79,7 @@ hr {
   right: 0;
   position: absolute;
   z-index: 1000;
-  height: 1846px;
+  height: 2113px;
 }
 
 /* header section */
@@ -1271,6 +1271,7 @@ a:hover {
 
 .catalog__container-main {
   text-align: center;
+  overflow: hidden;
 }
 
 .filter {
@@ -1400,6 +1401,10 @@ a:hover {
   margin-top: 15px;
   font-size: 18px;
   padding: 20px 57px;
+}
+
+.catalog__banners img{
+  width: 107%;
 }
 
 .banner__repair,
