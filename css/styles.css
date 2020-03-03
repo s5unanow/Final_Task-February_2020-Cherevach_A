@@ -65,16 +65,25 @@ hr {
   position: relative;
 }
 
+.active-text {
+  color: #f14a58;
+}
+
+.active-hover:hover {
+  color: #f14a58;
+  cursor: pointer;
+}
+
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/4_shopping_bag_768.png");
+  background: url("../img/test/4_shopping_bag_375.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
   top: 0;
   left: 0;
-  width: 768px;
+  width: 375px;
   bottom: 0;
   right: 0;
   position: absolute;
@@ -113,6 +122,11 @@ hr {
   padding-top: 4px;
 }
 
+.header__bag:hover {
+  color: #f14a58;
+  cursor: pointer;
+}
+
 .bag__img {
   width: 14px;
   height: 14px;
@@ -124,6 +138,11 @@ hr {
 
 .header__sign-up {
   display: none;
+  cursor: pointer;
+}
+
+.header__sign-up:hover {
+  color: #f14a58;
 }
 
 .header__burger-btn {
@@ -221,6 +240,10 @@ hr {
   text-transform: capitalize;
   text-decoration: none;
   color: black;
+}
+
+.header-nav__item a:hover {
+  color: #f14a58;
 }
 
 .header-nav__search {
@@ -332,6 +355,8 @@ hr {
 
 .item__img img {
   width: 42vw;
+  max-width: 250px;
+  min-width: 156px;
 }
 
 .item__name {
@@ -1024,7 +1049,7 @@ a:hover {
   }
 
   .header-nav__item {
-    margin-right: 4.6vw;
+    margin-right: 3.1vw;
   }
 
   .header-nav a {
@@ -1253,6 +1278,12 @@ a:hover {
 
   .footer__privacy li {
     margin-right: 35px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .header-nav__item {
+    margin-right: 4.6vw;
   }
 }
 
