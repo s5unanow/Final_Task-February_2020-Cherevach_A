@@ -68,18 +68,18 @@ hr {
  /*checking for pixeling*/
 .container-img::after {
   content: "";
-  background: url("../img/test/4_shopping_bag_375.png");
+  background: url("../img/test/4_shopping_bag_768.png");
   background-repeat: no-repeat;
   opacity: .15;
   /*top: 5px;*/
   top: 0;
   left: 0;
-  width: 375px;
+  width: 768px;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: 1000;
-  height: 2113px;
+  height: 1578px;
 }
 
 /* header section */

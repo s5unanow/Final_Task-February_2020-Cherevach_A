@@ -7,7 +7,7 @@
 }
 
 .section__bag-main {
-  margin: 15px 0 0 0;
+  margin: 15px 0 10px 0;
 }
 
 .bag-main__items {
@@ -104,4 +104,60 @@ span[class^="item__quantity--"] {
   letter-spacing: .3px;
   color: #f14a58;
   cursor: pointer;
+}
+
+.section__checkout {
+  margin-bottom: 98px;
+  text-align: center;
+  letter-spacing: .3px;
+}
+
+.checkout__delivery {
+  padding: 10px 20px;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 10px;
+  line-height: 1.6;
+  background: #f7f7f7;
+}
+
+.active-text {
+  color: #f14a58;
+}
+
+.checkout__info {
+  margin: 18px 0 0 0;
+}
+
+.price__discount {
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 12px;
+  color: #f14a58;
+}
+
+.price__discount--amount {
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 14px;
+}
+
+.price__total {
+  margin-top: 8px;
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 16px;
+}
+
+.price__total--amount {
+  font-size: 18px;
+}
+
+.checkout__btn {
+  margin-top: 15px;
+  padding: 20px 66px;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 18px;
+}
+
+.checkout__empty-bag {
+  margin-top: 20px;
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 10px;
 }
