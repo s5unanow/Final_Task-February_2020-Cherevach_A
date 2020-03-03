@@ -90,4 +90,11 @@ class Bag {
   }
 }
 
+class EventDispatcher {
+
+}
+
 const bag = Bag.create().initialize();
+const layoutBuilder = new LayoutBuilder();
+const dispatcher = new EventDispatcher();
+
