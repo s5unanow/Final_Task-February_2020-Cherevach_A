@@ -1,6 +1,26 @@
 "use strict";
 const uniqueStorageID = "asdffdavjssd8";
 
+class bagItem {
+  constructor(id, name, price, color, size) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.color = color;
+    this.size = size;
+  }
+}
+
+class BagItems {
+  static isItemsSame(item1, item2) {
+    let result = true;
+    for (let param of item1) {
+      if (item1[param] !== item2[param]) result = false
+    }
+    return result
+  }
+}
+
 class Storage {
   static hasItems() {
     return window.localStorage.getItem(uniqueStorageID);
@@ -78,6 +98,9 @@ class Bag {
     }
     return price
   }
+  getItemsQuantity() {
+    return this.items.length;
+  }
   getItems() {
     return this.items
   }
@@ -86,7 +109,9 @@ class Bag {
     Storage.clearStorage();
   }
   static create() {
-    return new Bag();
+    let bag = new Bag();
+    bag.initialize()
+    return bag;
   }
 }
 
@@ -94,7 +119,42 @@ class EventDispatcher {
 
 }
 
-const bag = Bag.create().initialize();
-const layoutBuilder = new LayoutBuilder();
+class LayoutBuilder {
+  constructor(bag) {
+    this.bag = bag;
+    this.DOMbag = document.getElementsByClassName("header__bag")[0]
+  }
+  updateDOMBag() {
+    let quantity = this.bag.getItemsQuantity();
+    this.DOMbag.querySelector(".bag__quantity").innerText = quantity;
+
+    let totalPrice = "£" + this.bag.getTotalPrice();
+    if (quantity === 0) {
+      this.DOMbag.querySelector(".bag__price").innerText = "";
+    } else {
+      this.DOMbag.querySelector(".bag__price").innerText = totalPrice;
+    }
+
+  }
+}
+
+const currentPage = document.getElementsByTagName("title")[0].innerText;
+const bag = Bag.create();
+const layoutBuilder = new LayoutBuilder(bag);
 const dispatcher = new EventDispatcher();
+
+layoutBuilder.updateDOMBag();
+
+if (currentPage.includes("Start")) {
+
+}
+if (currentPage.includes("Catalog")) {
+  layoutBuilder.buildDOMCatalog();
+}
+if (currentPage.includes("Item")) {
+
+}
+if (currentPage.includes("Shopping")) {
+  layoutBuilder.guildDOMBagItems();
+}
 
