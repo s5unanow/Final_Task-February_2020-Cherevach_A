@@ -190,8 +190,8 @@ window.catalog = [{
     hasNew: false,
     category: 'women',
     fashion: 'Casual style',
-    colors: ['Blue'],
-    sizes: ['UK 18'],
+    colors: ['Blue', 'Red', 'Purple'],
+    sizes: ['UK 18', 'UK 18S', 'UK 19'],
     thumbnail: 'thumbnail path', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }];

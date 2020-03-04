@@ -1,43 +1,4 @@
 "use strict";
-const uniqueStorageID = "asdffdavjssd8";
-
-class bagItem {
-  constructor(id, name, price, color, size) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.color = color;
-    this.size = size;
-  }
-}
-
-class BagItems {
-  static isItemsSame(item1, item2) {
-    let result = true;
-    for (let param of item1) {
-      if (item1[param] !== item2[param]) result = false
-    }
-    return result
-  }
-}
-
-class Storage {
-  static hasItems() {
-    return window.localStorage.getItem(uniqueStorageID);
-  }
-  static loadItems() {
-    let items = window.localStorage.getItem(uniqueStorageID);
-    items = Array.from(JSON.parse(items));
-    return items
-  }
-  static saveItems(items) {
-    let serializedItems = JSON.stringify(items);
-    window.localStorage.setItem(uniqueStorageID, serializedItems);
-  }
-  static clearStorage() {
-    window.localStorage.removeItem(uniqueStorageID);
-  }
-}
 
 class Bag {
   constructor() {
@@ -49,7 +10,7 @@ class Bag {
     }
   }
   hasBestOfferItems() {
-    return BestOffer.includesItems(this.items)
+    return BestOffer.includesDiscountedItems(this.items)
   }
   hasItems() {
     return this.items.length > 0
@@ -61,7 +22,7 @@ class Bag {
     if (this.includesItem(item.id)) {
       this.increaseItemQuantity(item.id)
     } else {
-
+      this.items.push(item);
     }
     Storage.saveItems(this.items);
   }
@@ -70,12 +31,12 @@ class Bag {
   }
   increaseItemQuantity(itemID) {
     let item = this.getItemByID(itemID);
-    item.quantity++;
+    item.quantity += 1;
     Storage.saveItems(this.items);
   }
   decreaseItemQuantity(itemID) {
     let item = this.getItemByID(itemID);
-    item.quantity--;
+    item.quantity -= 1;
     if (item.quantity === 0) {
       this.removeItem(itemID);
     }
@@ -90,7 +51,7 @@ class Bag {
   getTotalPrice() {
     let price = 0;
     if (this.hasItems()) {
-      price = this.items.reduce((price, itemPrice) => price + itemPrice,
+      price = this.items.reduce((price, item) => price + item.price * item.quantity,
         0);
       if (this.hasBestOfferItems()) {
         price -= BestOffer.getDiscount();
@@ -99,7 +60,9 @@ class Bag {
     return price
   }
   getItemsQuantity() {
-    return this.items.length;
+    return this.items.reduce((totalQuantity, item) => {
+      return totalQuantity + item.quantity
+    }, 0);
   }
   getItems() {
     return this.items
@@ -110,13 +73,40 @@ class Bag {
   }
   static create() {
     let bag = new Bag();
-    bag.initialize()
+    bag.initialize();
     return bag;
   }
 }
 
 class EventDispatcher {
-
+  constructor(bag, layoutBuilder) {
+    this.bag = bag;
+    this.layoutBuilder = layoutBuilder;
+  }
+  addItemToBag(event) {
+    let id = document.querySelector(".section-item").id;
+    let size = this.getItemSize();
+    let color = this.getItemColor();
+    let item = BagItem.createItem(id, size, color);
+    this.bag.addItem(item);
+    this.layoutBuilder.updateDOMBag();
+  }
+  getItemSize() {
+    let result = null;
+    let DOMSizes = document.querySelectorAll(".parameter__sizes radio");
+    for (let DOMSize of DOMSizes) {
+      if (DOMSize.checked) result = DOMSize.id
+    }
+    return result
+  }
+  getItemColor() {
+    let result = null;
+    let DOMColors = document.querySelectorAll(".parameter__colors radio");
+    for (let DOMColor of DOMColors) {
+      if (DOMColor.checked) result = DOMColor.id
+    }
+    return result
+  }
 }
 
 class LayoutBuilder {
@@ -128,12 +118,14 @@ class LayoutBuilder {
     let quantity = this.bag.getItemsQuantity();
     this.DOMbag.querySelector(".bag__quantity").innerText = quantity;
 
-    let totalPrice = "£" + this.bag.getTotalPrice();
+    let totalPrice = "£" + this.bag.getTotalPrice().toFixed(2);
     if (quantity === 0) {
       this.DOMbag.querySelector(".bag__price").innerText = "";
     } else {
       this.DOMbag.querySelector(".bag__price").innerText = totalPrice;
     }
+  }
+  buildDOMBagItems() {
 
   }
 }
@@ -141,7 +133,7 @@ class LayoutBuilder {
 const currentPage = document.getElementsByTagName("title")[0].innerText;
 const bag = Bag.create();
 const layoutBuilder = new LayoutBuilder(bag);
-const dispatcher = new EventDispatcher();
+const dispatcher = new EventDispatcher(bag, layoutBuilder);
 
 layoutBuilder.updateDOMBag();
 
@@ -152,9 +144,12 @@ if (currentPage.includes("Catalog")) {
   layoutBuilder.buildDOMCatalog();
 }
 if (currentPage.includes("Item")) {
-
+  let buyBtn = document.querySelector(".item-buy__btn");
+  buyBtn.addEventListener("click", event => {
+    dispatcher.addItemToBag(event);
+  });
 }
 if (currentPage.includes("Shopping")) {
-  layoutBuilder.guildDOMBagItems();
+  layoutBuilder.buildDOMBagItems();
 }
 

@@ -5,10 +5,10 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shopping</title>
+  <title>Item-2</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/shopping-bag.css">
+  <link rel="stylesheet" href="css/item.css">
 </head>
 <body>
 <div class="container">
@@ -90,118 +90,104 @@
     </nav>
   </header>
   <hr>
-  <main class="bag__container-main">
-    <section class="section-short section__bag-title">
-      <h1 class="bag-title__text section__heading">
-        Shopping bag
-      </h1>
+  <main class="item__container-main">
+    <section class="section-short section__back-to-catalog">
+      <a href="#" class="btn-back">< Back to catalog</a>
     </section>
     <hr>
-    <section class="section-short section__bag-main">
-      <div class="bag-main__items">
-        <div class="bag-main__item">
-          <div class="item__img item-new">
-            <div class="item__view-item--hover">
-              <div class="item__view-item--text">View Item</div>
-            </div>
-            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+    <section class="section-short section-item" id="ff665110-5e7f-435d-b1b4-651c3d5050ca">
+      <div class="item__view">
+        <div class="item__img">
+          <img id="item__preview" src="img/3_item-view-1.jpg" alt="Suit view 1">
+        </div>
+        <div class="item__thumbnails">
+          <img src="img/3_item-view-1.jpg" alt="Suit thumbnail 1" class="item__thumbnail item__thumbnail-1">
+          <img src="img/3_item-view-2.jpg" alt="Suit thumbnail 2" class="item__thumbnail item__thumbnail-2">
+          <img src="img/3_item-view-3.jpg" alt="Suit thumbnail 3" class="item__thumbnail item__thumbnail-3">
+        </div>
+      </div>
+      <div class="item__info">
+        <div class="item__description">
+          <div class="description__heading">
+            Paul & Joe Sister Jumper with Neon Trims
           </div>
-          <div class="item__data">
-            <div class="item__name">Turtle Neck Jumper
-              in Rib
-            </div>
-            <div class="item__price">£130.25</div>
-            <div class="item__color">Color: <span class="item__data--color">Red</span></div>
-            <div class="item__size">Size: <span class="item__data--size">UK52</span></div>
-            <div class="item__quantity">
-              Quantity: <span class="item__quantity--decrement">— </span><span class="item__data--quantity">1</span><span class="item__quantity--increment"> +</span>
-            </div>
-            <div class="item__remove-btn">Remove item</div>
+          <div class="description__price">
+            £19.75
+          </div>
+          <div class="description__text">
+            The dress covers her shoulders halfway and flows down into a fancy keyhole neckline. It's a comfortable fit which makes the dress look comfortable, yet elegant and stylish.
+            Her arms have been covered only halfway down.
           </div>
         </div>
-        <div class="bag-main__item">
-          <div class="item__img item-new">
-            <div class="item__view-item--hover">
-              <div class="item__view-item--text">View Item</div>
+        <div class="item__parameters">
+          <div class="parameter parameter__sizes">
+            <div class="size__label parameter__label">Size:</div>
+            <div class="parameter__value">
+              <input type="radio" name="size" id="uk-18" checked>
+              <label for="uk-18">UK 18</label>
             </div>
-            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
+            <div class="parameter__value">
+              <input type="radio" name="size" id="uk-18s">
+              <label for="uk-18s">UK 18S</label>
+            </div>
+            <div class="parameter__value">
+              <input type="radio" name="size" id="uk-19">
+              <label for="uk-19">UK 19</label>
+            </div>
           </div>
-          <div class="item__data">
-            <div class="item__name">Paul & Joe Sister Jumper with Neon  Trims
+          <div class="parameter parameter__colors">
+            <div class="color__label parameter__label">Color:</div>
+            <div class="parameter__value">
+              <input type="radio" name="color" id="blue" checked>
+              <label for="blue">Blue</label>
             </div>
-            <div class="item__price">£130.25</div>
-            <div class="item__color">Color: <span class="item__data--color">Red</span></div>
-            <div class="item__size">Size: <span class="item__data--size">UK52</span></div>
-            <div class="item__quantity">
-              Quantity: <span class="item__quantity--decrement">— </span><span class="item__data--quantity">1</span><span class="item__quantity--increment"> +</span>
+            <div class="parameter__value">
+              <input type="radio" name="color" id="red">
+              <label for="red">Red</label>
             </div>
-            <div class="item__remove-btn">Remove item</div>
-          </div>
-        </div>
-        <div class="bag-main__item">
-          <div class="item__img item-new">
-            <div class="item__view-item--hover">
-              <div class="item__view-item--text">View Item</div>
+            <div class="parameter__value">
+              <input type="radio" name="color" id="purple">
+              <label for="purple">Purple</label>
             </div>
-            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
-          </div>
-          <div class="item__data">
-            <div class="item__name">Turtle Neck Jumper
-              in Rib
-            </div>
-            <div class="item__price">£130.25</div>
-            <div class="item__color">Color: <span class="item__data--color">Red</span></div>
-            <div class="item__size">Size: <span class="item__data--size">UK52</span></div>
-            <div class="item__quantity">
-              Quantity: <span class="item__quantity--decrement">— </span><span class="item__data--quantity">1</span><span class="item__quantity--increment"> +</span>
-            </div>
-            <div class="item__remove-btn">Remove item</div>
           </div>
         </div>
-        <div class="bag-main__item">
-          <div class="item__img item-new">
-            <div class="item__view-item--hover">
-              <div class="item__view-item--text">View Item</div>
-            </div>
-            <img src="img/item-Only_Skinny_Jeans.png" alt="Only Skinny Jeans">
-          </div>
-          <div class="item__data">
-            <div class="item__name">Turtle Neck Jumper
-              in Rib
-            </div>
-            <div class="item__price">£130.25</div>
-            <div class="item__color">Color: <span class="item__data--color">Red</span></div>
-            <div class="item__size">Size: <span class="item__data--size">UK52</span></div>
-            <div class="item__quantity">
-              Quantity: <span class="item__quantity--decrement">— </span><span class="item__data--quantity">1</span><span class="item__quantity--increment"> +</span>
-            </div>
-            <div class="item__remove-btn">Remove item</div>
-          </div>
+        <div class="item-buy__cta">
+          <a href="#" class="item-buy__btn cta-btn">Add to bag</a>
         </div>
       </div>
     </section>
     <hr>
-    <section class="section__checkout section-short">
-      <div class="checkout__delivery">
-        You've qualified for Free UK Next Day Delivery on your order. Don't forget to enter the code
-        <span class="active-text">nexday</span> at checkout
+    <section class="banners item__banners catalog__banners">
+      <div class="banner banner__adidas">
+        <div class="banner__text">
+          <h2 class="banner__name">Adidas Blue</h2>
+          <p class="banner__text--extra">For men</p>
+        </div>
+        <div class="banner__img-container">
+          <img class="banner__img-adidas" src="img/2_catalog-banner-adidas-big.jpg" alt="Adidas">
+        </div>
       </div>
-      <div class="checkout__info">
-        <div class="checkout__price">
-          <div class="price__discount">Applied discount: <span class="price__discount--amount">£15.00</span></div>
-          <div class="price__total">Total price: <span class="price__total--amount">£236.50</span></div>
+      <div class="banner banner__repair">
+        <div class="banner__text">
+          <h2 class="banner__name">Repair patches</h2>
+          <p class="banner__text--repair">£150.50</p>
         </div>
-        <div class="checkout__cta">
-          <a href="#" class="checkout__btn cta-btn">Checkout</a>
+        <div class="banner__img-container">
+          <img class="banner__img-repair" src="img/2_catalog-banner-repair.jpg" alt="Repair">
         </div>
-        <div class="checkout__empty-bag active-hover">
-          Empty bag
+      </div>
+      <div class="banner banner__sale">
+        <div class="banner__text">
+          <h2 class="banner__name">Sale</h2>
+          <p class="banner__text--sale">-70%</p>
+        </div>
+        <div class="banner__img-container">
+          <img class="banner__img-sale" src="img/2_catalog-banner-sale.jpg" alt="Sale">
         </div>
       </div>
     </section>
   </main>
   <hr>
-
 
   <footer class="footer-main--tablet">
     <div class="footer-groups footer__part-1">
@@ -349,9 +335,8 @@
   </footer>
 </div>
 <!--<div class="container-img"></div>-->
-<script src="data/catalog.js" defer></script>
-<script src="data/best-offer.js" defer></script>
-<script src="js/helpers.js" defer></script>
-<script src="js/engine.js" defer></script>
+<script src="data/catalog.js"></script>
+<script src="data/best-offer.js"></script>
+<script src="js/engine.js"></script>
 </body>
 </html>
