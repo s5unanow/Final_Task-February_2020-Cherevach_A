@@ -2,7 +2,7 @@
 
 class Slider {
   constructor() {
-    this.itemsLeftID = window.bestOffer.left;
-    this.itemsRightID = this.getRightItemsFromBestOffer();
+    this.itemsLeftID = BagItem.createItemsFromID(window.bestOffer.left);
+    this.itemsRightID = BagItem.createItemsFromID(window.bestOffer.right);
   }
 }

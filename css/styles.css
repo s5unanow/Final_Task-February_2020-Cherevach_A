@@ -1366,6 +1366,10 @@ a:hover {
   display: none;
 }
 
+.promo-last-weekend__items {
+  align-items: flex-start;
+}
+
 .catalog-main__items .item:nth-child(n+7) {
   display: none;
 }

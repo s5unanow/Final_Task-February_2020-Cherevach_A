@@ -10,7 +10,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: [],
     sizes: [],
-    thumbnail: 'thumbnail path', // replace with path to image extracted from catalog layout
+    thumbnail: 'item-Monki_Festval_Knitted.png', // replace with path to image extracted from catalog layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '07cf6ce2-6eee-4e78-a441-f257fdea7ed6',
@@ -24,7 +24,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Black', 'White'],
     sizes: ['UK 18'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Boyfriend_T-Shirt_with_Bohemian_Print.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '0fdfa061-838d-42ab-ae06-99c66115f633',
@@ -38,7 +38,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: [],
     sizes: [],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Boyfriend_T-Shirt_with_Paris_Print.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '4a3d3c3e-9dc5-4d99-b33d-42b22e20dc0b',
@@ -66,7 +66,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Blue'],
     sizes: ['UK 18'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Levis_Jeans_for_women.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '739d3ae0-6dca-4453-a7a4-a94b841a296d',
@@ -80,7 +80,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: [],
     sizes: [],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-With_Patchwork_Crochet.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '80d32566-d81c-4ba0-9edf-0eceda3b4360',
@@ -94,7 +94,7 @@ window.catalog = [{
     fashion: 'Classical style',
     colors: ['Black', 'Blue'],
     sizes: ['UK 52', 'UK 54', 'UK 56'],
-    thumbnail: 'item-Dark_Classic_Fit_Suit.jpg', // replace with image extracted from item layout
+    thumbnail: 'item-Dark_Classic_Fit_Suit.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '8b300772-eee3-4ff1-b091-e89f17e0e469',
@@ -108,7 +108,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Green'],
     sizes: ['UK 19'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Neck_Knitted_Jumper.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '8c061815-6a7d-4465-bb78-1bdc6c5adebf',
@@ -122,7 +122,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Phillipa wash'],
     sizes: ['UK 17'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Only_Skinny_Jeans.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '9ded7821-e510-4a16-ba9f-57c1e3442ad8',
@@ -136,7 +136,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: [],
     sizes: [],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Turtle_Neck_Jumper_in_Rib.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: 'bec71daa-d133-473d-bbb0-1ee0a427a17d',
@@ -150,7 +150,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Dark Blue'],
     sizes: ['UK 19'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Only_Busted_Knee_Jean.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: 'ccc8a5d5-7cdf-4706-95f2-abc64761400d',
@@ -164,7 +164,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: [],
     sizes: [],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Colour_Block.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: 'e50a3153-7833-4b85-b412-1a39d215fd38',
@@ -178,7 +178,7 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Raw umber', 'Dark blue'],
     sizes: ['UK 18', 'UK 19'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Oversized_Cardigan.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: 'ff665110-5e7f-435d-b1b4-651c3d5050ca',
@@ -192,6 +192,6 @@ window.catalog = [{
     fashion: 'Casual style',
     colors: ['Blue', 'Red', 'Purple'],
     sizes: ['UK 18', 'UK 18S', 'UK 19'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Paul_&_Joe_Sister_Jumper_with_Neon_Trims.png', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }];

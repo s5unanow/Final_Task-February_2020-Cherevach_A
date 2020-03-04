@@ -61,9 +61,13 @@ class Bag {
     return price
   }
   getItemsQuantity() {
-    return this.items.reduce((totalQuantity, item) => {
-      return totalQuantity + item.quantity
-    }, 0);
+    let result = 0;
+    if (this.hasItems()) {
+      result = this.items.reduce((totalQuantity, item) => {
+        return totalQuantity + item.quantity
+      }, 0);
+    }
+    return result
   }
   getItems() {
     return this.items
@@ -73,11 +77,15 @@ class Bag {
     Storage.clearStorage();
   }
   getTotalDiscount() {
-    if (this.hasBestOfferItems()) return BestOffer.getDiscount()
+    if (this.hasBestOfferItems()) return BestOffer.getDiscount();
     else return 0
   }
   getItemQuantity(itemID) {
-    return this.getItemByID(itemID).quantity
+    let result = 0;
+    if (this.includesItem(itemID)) {
+      result = this.getItemByID(itemID).quantity;
+    }
+    return result
   }
   static create() {
     let bag = new Bag();
@@ -115,7 +123,7 @@ class EventDispatcher {
     }
     return result
   }
-  addListeners() {
+  addBagListeners() {
     this.addEmptyBagListener();
     this.addChangeQuantityListeners();
     this.addRemoveItemListeners();
@@ -182,6 +190,21 @@ class LayoutBuilder {
       this.DOMbag.querySelector(".bag__price").innerText = totalPrice;
     }
   }
+  buildDOMCatalog(catalogItems) {
+    let PromoLastWeekendItems = document.querySelector(".promo-last-weekend__items");
+    let DOMData = "";
+    for (let i = 0; i < 4; i++) {
+      DOMData += DOMTemplates.generateCatalogPromoItemTemplate(catalogItems[i]);
+    }
+    PromoLastWeekendItems.innerHTML = DOMData;
+
+    DOMData = "";
+    let DOMCatalogMainItems = document.querySelector(".catalog-main__items");
+    for (let i = 3; i < catalogItems.length; i++) {
+      DOMData += DOMTemplates.generateCatalogMainItemTemplate(catalogItems[i]);
+    }
+    DOMCatalogMainItems.innerHTML = DOMData;
+  }
   buildDOMBagPage() {
     this.buildDOMBagItemsSection();
     this.updateDOMBagCheckoutSection();
@@ -216,8 +239,12 @@ class LayoutBuilder {
     else return totalPrice
   }
   updateDOMItemQuantity(DOMItem) {
-    let DOMItemQuantity = DOMItem.querySelector(".item__data--quantity");
-    DOMItemQuantity.innerText = this.bag.getItemQuantity(DOMItem.id);
+    let itemQuantity = this.bag.getItemQuantity(DOMItem.id);
+    if (itemQuantity === 0) this.removeDOMItem(DOMItem);
+    else {
+      let DOMItemQuantity = DOMItem.querySelector(".item__data--quantity");
+      DOMItemQuantity.innerText = itemQuantity;
+    }
     this.updateDOMBag();
     this.updateDOMBagCheckoutSection()
   }
@@ -235,6 +262,14 @@ class LayoutBuilder {
   }
 }
 
+let filteredCatalogItems = window.catalog.filter(catalogItem => {
+  return catalogItem.category === "women" && catalogItem.fashion === "Casual style"
+});
+filteredCatalogItems.sort((item1, item2) => {
+  return Date.parse(item1.dateAdded) - Date.parse(item2.dateAdded)
+});
+
+
 const currentPage = document.getElementsByTagName("title")[0].innerText;
 const bag = Bag.create();
 const layoutBuilder = new LayoutBuilder(bag);
@@ -246,7 +281,7 @@ if (currentPage.includes("Start")) {
 
 }
 if (currentPage.includes("Catalog")) {
-  layoutBuilder.buildDOMCatalog();
+  layoutBuilder.buildDOMCatalog(filteredCatalogItems);
 }
 if (currentPage.includes("Item")) {
   let buyBtn = document.querySelector(".item-buy__btn");
@@ -256,6 +291,6 @@ if (currentPage.includes("Item")) {
 }
 if (currentPage.includes("Shopping")) {
   layoutBuilder.buildDOMBagPage();
-  dispatcher.addListeners();
+  dispatcher.addBagListeners();
 }
 

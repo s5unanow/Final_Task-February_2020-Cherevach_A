@@ -21,6 +21,15 @@ class BagItem {
   static getCatalogParameters(item) {
     return window.catalog.filter(catalogItem => catalogItem.id === item.catalogID)[0];
   }
+  static createDefaultFromCatalogID(catalogItemID) {
+    let catalogItem = window.catalog.filter(catalogItem => catalogItem.id === catalogItemID)[0];
+    return BagItem.createItem(catalogItemID, catalogItem.color[0], catalogItem.size[0])
+  }
+  static createItemsFromID(idArray) {
+    let result = [];
+    result = idArray.map(id => BagItem.createDefaultFromCatalogID(id));
+    return result
+  }
   static getItemImg(item) {
     return BagItem.getCatalogParameters(item).thumbnail;
   }
@@ -87,6 +96,38 @@ class Storage {
 }
 
 class DOMTemplates {
+  static generateCatalogPromoItemTemplate(catalogItem) {
+    let price = catalogItem.price.toFixed(2);
+    let oldPrice = "";
+    if (catalogItem.discountedPrice && catalogItem.discountedPrice !== catalogItem.price) {
+      oldPrice = `<span class="old-price">£${price}</span>`;
+      price = catalogItem.discountedPrice.toFixed(2);
+    }
+    return `        <div class="promo-last-weekend__item item${catalogItem.hasNew? " item-new" : ""}">
+          <div class="item__img">
+            <img src="img/${catalogItem.thumbnail}" alt="${catalogItem.title}">
+          </div>
+          <div class="item__name">${catalogItem.title}</div>
+          <div class="item__price">${oldPrice}£${price}</div>
+        </div>
+    `
+  }
+  static generateCatalogMainItemTemplate(catalogItem) {
+    let price = catalogItem.price.toFixed(2);
+    let oldPrice = "";
+    if (catalogItem.discountedPrice && catalogItem.discountedPrice !== catalogItem.price) {
+      oldPrice = `<span class="old-price">£${price}</span>`;
+      price = catalogItem.discountedPrice.toFixed(2);
+    }
+    return `        <div class="catalog-main__item item${catalogItem.hasNew? " item-new" : ""}">
+          <div class="item__img">
+            <img src="img/${catalogItem.thumbnail}" alt="${catalogItem.title}">
+          </div>
+          <div class="item__name">${catalogItem.title}</div>
+          <div class="item__price">${oldPrice}£${price}</div>
+        </div>
+    `
+  }
   static generateBagItemTemplate(item) {
     return `
         <div class="bag-main__item" id="${item.id}">
