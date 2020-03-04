@@ -200,7 +200,7 @@ class LayoutBuilder {
 
     DOMData = "";
     let DOMCatalogMainItems = document.querySelector(".catalog-main__items");
-    for (let i = 3; i < catalogItems.length; i++) {
+    for (let i = 4; i < catalogItems.length; i++) {
       DOMData += DOMTemplates.generateCatalogMainItemTemplate(catalogItems[i]);
     }
     DOMCatalogMainItems.innerHTML = DOMData;
