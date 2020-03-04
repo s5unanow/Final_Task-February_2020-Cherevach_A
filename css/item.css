@@ -27,6 +27,7 @@
 
 .item__img img {
   display: block;
+  max-width: unset;
   width: 335px;
   height: 223px;
 }
@@ -69,7 +70,7 @@
 
 .item__parameters {
   margin: 30px auto 0 auto;
-  width: 335px;
+  width: 350px;
 }
 
 .parameter__label {

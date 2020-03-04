@@ -85,7 +85,7 @@ window.catalog = [{
 }, {
     id: '80d32566-d81c-4ba0-9edf-0eceda3b4360',
     dateAdded: '2017-01-01T13:26:14.000Z',
-    title: 'Dark classic fit suit',
+    title: 'Dark Classic Fit Suit',
     description: 'Featuring fine Italian wool, this elegant suit has pick-stitch edging, cascade buttons at the cuffs',
     discountedPrice: 180.6,
     price: 180.6,
@@ -94,7 +94,7 @@ window.catalog = [{
     fashion: 'Classical style',
     colors: ['Black', 'Blue'],
     sizes: ['UK 52', 'UK 54', 'UK 56'],
-    thumbnail: 'thumbnail path', // replace with image extracted from item layout
+    thumbnail: 'item-Dark_Classic_Fit_Suit.jpg', // replace with image extracted from item layout
     preview: ['full image path 1', 'full image path 2', 'full image path 3'] // replace with paths to images extracted from item layout
 }, {
     id: '8b300772-eee3-4ff1-b091-e89f17e0e469',

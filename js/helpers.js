@@ -16,10 +16,20 @@ class BagItem {
     let catalogItem = window.catalog.filter(catalogItem => catalogItem.id === catalogID)[0];
     let id = catalogID + "--" + color + "--" + size;
     let price = catalogItem.discountedPrice ? catalogItem.discountedPrice :  catalogItem.price;
-    return new BagItem(id, catalogID.name, price, color, size, quantity, catalogID)
+    return new BagItem(id, catalogItem.title, price, color, size, quantity, catalogID)
+  }
+  static getCatalogParameters(item) {
+    return window.catalog.filter(catalogItem => catalogItem.id === item.catalogID)[0];
   }
   static getItemImg(item) {
-    return window.catalog.filter(catalogItem => catalogItem.id === item.catalogID)[0].thumbnail;
+    return BagItem.getCatalogParameters(item).thumbnail;
+  }
+  static getNewState(item) {
+    let result = "";
+    if (BagItem.getCatalogParameters(item).hasNew) {
+      result = "item-new"
+    }
+    return result
   }
 }
 
@@ -80,7 +90,7 @@ class DOMTemplates {
   static generateBagItemTemplate(item) {
     return `
         <div class="bag-main__item" id="${item.id}">
-          <div class="item__img item-new">
+          <div class="item__img ${BagItem.getNewState(item)}">
             <div class="item__view-item--hover">
               <div class="item__view-item--text">View Item</div>
             </div>
@@ -91,7 +101,7 @@ class DOMTemplates {
             </div>
             <div class="item__price">£${item.price}</div>
             <div class="item__color">Color: <span class="item__data--color">${item.color}</span></div>
-            <div class="item__size">Size: <span class="item__data--size">${item.size}</span></div>
+            <div class="item__size">Size: <span class="item__data--size">${item.size.replace("-", " ")}</span></div>
             <div class="item__quantity">
               Quantity: <span class="item__quantity--decrement">— </span><span class="item__data--quantity">${item.quantity}</span><span class="item__quantity--increment"> +</span>
             </div>
@@ -99,8 +109,30 @@ class DOMTemplates {
           </div>
         </div>`
   }
+  static generateBagCheckout(totalPrice, discount) {
+    let discountString = `&nbsp;`;
+    if (discount) {
+      discountString = `Applied discount: <span class="price__discount--amount">${discount}</span>`
+    }
+    return `
+          <div class="checkout__delivery">
+        You've qualified for Free UK Next Day Delivery on your order. Don't forget to enter the code
+        <span class="active-text">nexday</span> at checkout
+      </div>
+      <div class="checkout__info">
+        <div class="checkout__price">
+          <div class="price__discount">${discountString}</div>
+          <div class="price__total">Total price: <span class="price__total--amount">£${totalPrice}</span></div>
+        </div>
+        <div class="checkout__cta">
+          <a href="#" class="checkout__btn cta-btn">Checkout</a>
+        </div>
+        <div class="checkout__empty-bag active-hover">
+          Empty bag
+        </div>`
+  }
   static generateEmptyBagTemplate() {
-    return `<div class="bag__empty">Your shopping bag is empty. Use Catalog to add new items.</div>
+    return `<div class="bag__empty ">Your shopping bag is empty. Use Catalog to add new items.</div>
     `
   }
   static generateCheckoutTemplate() {

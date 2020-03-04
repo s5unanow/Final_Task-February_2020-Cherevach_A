@@ -60,6 +60,7 @@
   margin-top: 11px;
   width: 60%;
   line-height: 1.5;
+  text-transform: capitalize;
 }
 
 .bag-main__item .item__price {
@@ -80,8 +81,16 @@
   margin-top: 30px;
 }
 
+.item__data--color {
+  text-transform: capitalize;
+}
+
 .bag-main__item .item__size {
   margin-top: 10px;
+}
+
+.item__data--size {
+  text-transform: uppercase;
 }
 
 .bag-main__item .item__quantity {
