@@ -23,13 +23,15 @@
 }
 
 .item__img {
+  position: relative;
   flex: 1;
 }
 
 .item__view-item--hover {
   position: absolute;
   display: none;
-  width: 90%;
+  width: 42vw;
+  max-width: 250px;
   height: 100%;
   background: rgba(0, 0, 0, .5);
   z-index: 1000;
@@ -308,11 +310,16 @@ span[class^="item__quantity--"] {
   }
 
   .item__view-item--hover {
-    width: 100%;
+    width: 242px;
   }
 
   .bag-main__item img {
     width: 242px;
+  }
+
+  .item-new::after {
+    top: 5.5%;
+    left: 0;
   }
 
   .item__img {
@@ -389,5 +396,9 @@ span[class^="item__quantity--"] {
 
   .item__data {
     flex-basis: 55%;
+  }
+
+  .item__view-item--hover {
+     width: 100%;
   }
 }

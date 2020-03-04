@@ -24,6 +24,9 @@
   text-align: center;
 }
 
+.item__img {
+  position: relative;
+}
 
 .item__img img {
   display: block;

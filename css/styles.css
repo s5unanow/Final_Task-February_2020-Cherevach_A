@@ -441,11 +441,17 @@ hr {
   border: 1px solid #c9cbcd;
   font-family: "OpenSans-Bold", sans-serif;
   text-decoration: none;
+  transition: all .3s;
 }
 
 .cta-btn:hover {
   color: #f14a58;
   border: 1px solid #f14a58;
+}
+
+.cta-btn:active {
+  box-shadow: 10px 10px 26px -13px rgba(0,0,0,0.26);
+  transform: translateX(3px);
 }
 
 .new-arrivals {
@@ -1131,11 +1137,6 @@ a:hover {
     width: 240px;
   }
 
-  .item-new::after {
-    top: 3%;
-    left: 3px;
-  }
-
   .section__heading {
     font-size: 50px;
   }
@@ -1750,3 +1751,6 @@ a:hover {
   }
 }
 
+.item__view-item--hover {
+  cursor: pointer;
+}
