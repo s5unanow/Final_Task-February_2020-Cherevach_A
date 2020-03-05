@@ -7,12 +7,31 @@ class Slider {
     this.currentLeftItemNumber = 0;
     this.currentRightItemNumber = 0;
   }
-  switchItem(event) {
+  switchItem(switcherClass) {
+    if (switcherClass.indexOf("best-offer__slide-up--left") >= 0) {
+      this.switchLeftItem(switcherClass);
+    } else {
+      this.switchRightItem(switcherClass);
+    }
+  }
+  switchLeftItem(switcherClass) {
+    let DOMItem =
+    if (switcherClass.indexOf("best-offer__slide-up") >= 0) {
+      this.switchLeftItemUp(switcherClass);
+    } else {
+      this.switchRightItem(switcherClass);
+    }
+  }
+  switchLeftItemUp() {
 
   }
-  switchLeftItem(event) {
+  switchLeftItemDown() {
 
   }
+  switchRightItem(switcherClass) {
+
+  }
+
   getCurrentItems() {
     let result = [];
     let leftItem = Object.assign({}, this.itemsLeft[this.currentLeftItemNumber]);
@@ -28,8 +47,8 @@ let slider = new Slider();
 let DOMBestOfferBlock = document.querySelector(".best-offer__offer-block");
 
 DOMBestOfferBlock.addEventListener("click", event => {
-  let DOMClickedClassName = event.target.getAttribute("class");
-  if (DOMClickedClassName.indexOf("best-offer__slide") >= 0) {
-    slider.switchItem(DOMClickedClassName);
+  let DOMSwitcherClassName = event.target.getAttribute("class");
+  if (DOMSwitcherClassName.indexOf("best-offer__slide") >= 0) {
+    slider.switchItem(DOMSwitcherClassName);
   }
 });

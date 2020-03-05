@@ -109,24 +109,6 @@ function DOMRemoveClass(DOMElement, targetClassName) {
   DOMElement.className = classNames;
 }
 
-function DOMToggleClass(DOMElement, targetClassName) {
-  let classNames = DOMElement.className;
-  if (classNames.indexOf(targetClassName) >= 0) {
-    if (classNames.indexOf(targetClassName) === 0) {
-      classNames = classNames.replace(targetClassName, "");
-    } else {
-      classNames = classNames.replace(" " + targetClassName, "");
-    }
-  } else {
-    if (classNames === "") {
-      classNames = targetClassName;
-    } else {
-      classNames = classNames + " " + targetClassName;
-    }
-  }
-  DOMElement.className = classNames;
-}
-
 /* photos switcher */
 
 let DOMPreview = document.querySelector("#item__preview");
