@@ -57,7 +57,6 @@ html {
 }
 
 hr {
-  /*margin-left: -70px;*/
   max-width: 1440px;
   border: none;
   height: 1px;
@@ -67,6 +66,10 @@ hr {
 
 .active-text {
   color: #f14a58;
+}
+
+.active-text--black {
+  color: black;
 }
 
 .active-hover:hover {
@@ -1321,6 +1324,10 @@ a:hover {
   margin: auto;
 }
 
+.filter-mobile {
+  overflow: unset;
+}
+
 .filter__params {
   padding: 18px 0 22px 30px;
   font-family: 'OpenSans-Bold', sans-serif;
@@ -1355,6 +1362,68 @@ a:hover {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+
+
+.filter-mobile__popup {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  width: 100vw;
+  padding-bottom: 30px;
+  background: white;
+  display: none;
+  z-index: 2000;
+}
+
+.filter-mobile__lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.filter-mobile__category {
+  margin-top: 35px;
+  flex-basis: 37%;
+}
+
+.filter-mobile__category--type {
+  font-family: "Roboto-Bold", serif;
+  font-size: 17px;
+  letter-spacing: .3px;
+}
+
+.filter-mobile__list {
+  margin-left: 10px;
+  font-family: "OpenSans-Bold", serif;
+  font-size: 14px;
+  color: #a8a8a8;
+  letter-spacing: .3px;
+}
+
+.filter-mobile__value {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.filter-mobile__value:hover {
+  color: #f14a58;
+}
+
+.filter__cover {
+  background: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  left: 0;
+  top: 126px;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  z-index: 1500;
+}
+
+#filter__checkbox:checked ~ .filter-mobile__popup,
+#filter__checkbox:checked ~ .filter__cover {
+  display: block;
 }
 
 .promo-last-weekend {
@@ -1477,10 +1546,28 @@ a:hover {
     font-size: 14px;
   }
 
+  .filter-mobile__popup {
+    top: 70px;
+  }
+
+  .filter-mobile__category {
+    margin-left: 30px;
+    margin-top: 35px;
+    flex-basis: 28%;
+  }
+
+  .filter-mobile__list {
+    margin-left: 20px;
+  }
+
   .filter__toggle-btn {
     right: 176px;
     top: 6px;
     background: transparent;
+  }
+
+  .filter__cover {
+    top: 200px;
   }
 
   .promo-last-weekend__item:nth-child(3) {
@@ -1585,8 +1672,20 @@ a:hover {
   }
 
   .filter__categories {
-    margin: 0 -2% 0 1.5%;
+    position: relative;
+    margin: 0 -2% -1px 1.5%;
     display: flex;
+  }
+
+  .filter__categories:after {
+    content: "";
+    position: absolute;
+    left: -2.5%;
+    bottom: 0;
+    width: 105%;
+    height: 1px;
+    background: #c9cbcd;
+    z-index: 2000;
   }
 
   .filter__category {
