@@ -26,7 +26,8 @@ class Bag {
     }
     Storage.saveItems(this.items);
   }
-  addBestOfferItems(itemLeft, itemRight) {
+  addBestOfferItems(items) {
+    items.forEach(item => this.addItem(item));
     Storage.saveItems(this.items);
   }
   increaseItemQuantity(itemID) {
@@ -98,6 +99,10 @@ class EventDispatcher {
   constructor(bag, layoutBuilder) {
     this.bag = bag;
     this.layoutBuilder = layoutBuilder;
+  }
+  addBestOfferItems(items) {
+    this.bag.addBestOfferItems(items);
+    layoutBuilder.updateDOMBag()
   }
   addItemToBag() {
     let id = document.querySelector(".section-item").id;
@@ -282,7 +287,11 @@ const dispatcher = new EventDispatcher(bag, layoutBuilder);
 layoutBuilder.updateDOMBag();
 
 if (currentPage.includes("Start")) {
-
+  let buyBestOfferBtn = document.querySelector(".best-offer__btn");
+  buyBestOfferBtn.addEventListener("click", event => {
+    let items = slider.getCurrentItems();
+    dispatcher.addBestOfferItems(items);
+  });
 }
 if (currentPage.includes("Catalog")) {
   layoutBuilder.buildDOMCatalog(filteredCatalogItems);

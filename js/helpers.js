@@ -12,7 +12,7 @@ class BagItem {
     this.quantity = quantity;
     this.catalogID = catalogID;
   }
-  static createItem(catalogID, color, size, quantity = 1) {
+  static createItem(catalogID, color = "Default", size = "Default", quantity = 1) {
     let catalogItem = window.catalog.filter(catalogItem => catalogItem.id === catalogID)[0];
     let id = catalogID + "--" + color + "--" + size;
     let price = catalogItem.discountedPrice ? catalogItem.discountedPrice :  catalogItem.price;
@@ -23,7 +23,9 @@ class BagItem {
   }
   static createDefaultFromCatalogID(catalogItemID) {
     let catalogItem = window.catalog.filter(catalogItem => catalogItem.id === catalogItemID)[0];
-    return BagItem.createItem(catalogItemID, catalogItem.color[0], catalogItem.size[0])
+    let color = catalogItem.colors[0] ? catalogItem.colors[0] : "Default";
+    let size = catalogItem.sizes[0] ? catalogItem.sizes[0] : "Default";
+    return BagItem.createItem(catalogItemID, color, size);
   }
   static createItemsFromID(idArray) {
     let result = [];
@@ -140,7 +142,7 @@ class DOMTemplates {
           <div class="item__data">
             <div class="item__name">${item.name}
             </div>
-            <div class="item__price">£${item.price}</div>
+            <div class="item__price">£${item.price.toFixed(2)}</div>
             <div class="item__color">Color: <span class="item__data--color">${item.color}</span></div>
             <div class="item__size">Size: <span class="item__data--size">${item.size.replace("-", " ")}</span></div>
             <div class="item__quantity">
@@ -153,7 +155,7 @@ class DOMTemplates {
   static generateBagCheckout(totalPrice, discount) {
     let discountString = `&nbsp;`;
     if (discount) {
-      discountString = `Applied discount: <span class="price__discount--amount">${discount}</span>`
+      discountString = `Applied discount: <span class="price__discount--amount">£${discount.toFixed(2)}</span>`
     }
     return `
           <div class="checkout__delivery">
