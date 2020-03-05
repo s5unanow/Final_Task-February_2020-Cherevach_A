@@ -83,32 +83,6 @@ function setFilterCategoryString(DOMCategory, filterValue) {
   DOMAddClass(DOMStringParam, "filter__param--set");
 }
 
-function DOMAddClass(DOMElement, targetClassName) {
-  let classNames = DOMElement.className;
-  if (classNames.indexOf(targetClassName) >= 0) {
-    /* do not add same class again */
-  } else {
-    if (classNames === "") {
-      classNames = targetClassName;
-    } else {
-      classNames = classNames + " " + targetClassName;
-    }
-  }
-  DOMElement.className = classNames;
-}
-
-function DOMRemoveClass(DOMElement, targetClassName) {
-  let classNames = DOMElement.className;
-  if (classNames.indexOf(targetClassName) >= 0) {
-    if (classNames.indexOf(targetClassName) === 0) {
-      classNames = classNames.replace(targetClassName, "");
-    } else {
-      classNames = classNames.replace(" " + targetClassName, "");
-    }
-  }
-  DOMElement.className = classNames;
-}
-
 /* photos switcher */
 
 let DOMPreview = document.querySelector("#item__preview");

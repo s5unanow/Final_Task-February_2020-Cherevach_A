@@ -198,6 +198,10 @@ span[class^="item__quantity--"] {
     width: 18.8vw;
   }
 
+  .item__view-item--hover {
+    width: 18.8vw;
+  }
+
   .item__data {
     margin-left: 15px
   }
@@ -290,7 +294,7 @@ span[class^="item__quantity--"] {
 
   .bag-title__text {
     font-size: 26px;
-    padding-left: 20px;
+    padding-left: 40px;
   }
 
   .section__bag-main {

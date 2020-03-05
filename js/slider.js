@@ -47,7 +47,7 @@ class Slider {
     } else {
       item = this.itemsLeft.moveDown();
     }
-    this.updateItem(DOMItem, item.name, item.price, BagItem.getItemImg(item));
+    this.updateItem(DOMItem, item);
   }
   switchRightItem(switcherClass) {
     let item;
@@ -57,15 +57,20 @@ class Slider {
     } else {
       item = this.itemsRight.moveDown();
     }
-    this.updateItem(DOMItem, item.name, item.price, BagItem.getItemImg(item));
+    this.updateItem(DOMItem, item);
   }
-  updateItem(DOMItem, name, price, imageURL) {
+  updateItem(DOMItem, item) {
     let DOMName = DOMItem.querySelector(".item__name");
-    DOMName.innerText = name;
+    DOMName.innerText = item.name;
     let DOMPrice = DOMItem.querySelector(".item__price");
-    DOMPrice.innerText = "£" + price.toFixed(2);
+    DOMPrice.innerText = "£" + item.price.toFixed(2);
     let DOMImg = DOMItem.querySelector(".item__img img");
-    DOMImg.src = "img/" + imageURL;
+    DOMImg.src = "img/" + BagItem.getItemImg(item);
+    if (BagItem.getNewState(item)) {
+      DOMAddClass(DOMItem, "item-new")
+    } else {
+      DOMRemoveClass(DOMItem, "item-new")
+    }
   }
   updatePrice() {
     let DOMPrice = document.querySelector(".best-offer__old-price");
@@ -91,7 +96,6 @@ let slider = new Slider();
 let DOMBestOfferBlock = document.querySelector(".best-offer__offer-block");
 
 DOMBestOfferBlock.addEventListener("click", event => {
-  console.log(event.target);
   let DOMSwitcherClassName = event.target.getAttribute("class");
   if (DOMSwitcherClassName.indexOf("best-offer__slide") >= 0) {
     slider.switchItem(DOMSwitcherClassName);

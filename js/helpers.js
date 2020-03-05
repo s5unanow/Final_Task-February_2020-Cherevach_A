@@ -105,13 +105,16 @@ class DOMTemplates {
       oldPrice = `<span class="old-price">£${price}</span>`;
       price = catalogItem.discountedPrice.toFixed(2);
     }
-    return `        <div class="promo-last-weekend__item item${catalogItem.hasNew? " item-new" : ""}">
+    return `                <a class="promo-last-weekend__item" href="item.html"><div class="item${catalogItem.hasNew? " item-new" : ""}">
           <div class="item__img">
+                      <div class="item__view-item--hover">
+              <div class="item__view-item--text">View Item</div>
+            </div>
             <img src="img/${catalogItem.thumbnail}" alt="${catalogItem.title}">
           </div>
           <div class="item__name">${catalogItem.title}</div>
           <div class="item__price">${oldPrice}£${price}</div>
-        </div>
+        </div></a>
     `
   }
   static generateCatalogMainItemTemplate(catalogItem) {
@@ -121,13 +124,16 @@ class DOMTemplates {
       oldPrice = `<span class="old-price">£${price}</span>`;
       price = catalogItem.discountedPrice.toFixed(2);
     }
-    return `        <div class="catalog-main__item item${catalogItem.hasNew? " item-new" : ""}">
+    return `        <a href="item-2.html"><div class="catalog-main__item item${catalogItem.hasNew? " item-new" : ""}">
           <div class="item__img">
+                      <div class="item__view-item--hover">
+              <div class="item__view-item--text">View Item</div>
+            </div>
             <img src="img/${catalogItem.thumbnail}" alt="${catalogItem.title}">
           </div>
           <div class="item__name">${catalogItem.title}</div>
           <div class="item__price">${oldPrice}£${price}</div>
-        </div>
+        </div></a>
     `
   }
   static generateBagItemTemplate(item) {
@@ -182,4 +188,30 @@ class DOMTemplates {
     return `<div class="bag__empty">Thank you for your purchase.</div>
     `
   }
+}
+
+function DOMAddClass(DOMElement, targetClassName) {
+  let classNames = DOMElement.className;
+  if (classNames.indexOf(targetClassName) >= 0) {
+    /* do not add same class again */
+  } else {
+    if (classNames === "") {
+      classNames = targetClassName;
+    } else {
+      classNames = classNames + " " + targetClassName;
+    }
+  }
+  DOMElement.className = classNames;
+}
+
+function DOMRemoveClass(DOMElement, targetClassName) {
+  let classNames = DOMElement.className;
+  if (classNames.indexOf(targetClassName) >= 0) {
+    if (classNames.indexOf(targetClassName) === 0) {
+      classNames = classNames.replace(targetClassName, "");
+    } else {
+      classNames = classNames.replace(" " + targetClassName, "");
+    }
+  }
+  DOMElement.className = classNames;
 }

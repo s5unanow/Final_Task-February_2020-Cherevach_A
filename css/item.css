@@ -97,6 +97,10 @@
   width: 350px;
 }
 
+.parameter__value:hover label {
+  cursor: pointer;
+}
+
 .parameter__label {
   padding-top: 4px;
   font-family: "Roboto-Regular", sans-serif;
