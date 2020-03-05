@@ -268,7 +268,7 @@ var DOMTemplates =
     }, {
       key: "generateCheckoutTemplate",
       value: function generateCheckoutTemplate() {
-        return "<div class=\"bag__empty\">Thank you for your purchase. Maybe use <a href=\"catalog.html\" class=\"active-text\" >Catalog</a> to find more awesome items!</div>\n    ";
+        return "<div class=\"bag__empty\">Thank you for your purchase. Maybe use <a href=\"catalog.html\" class=\"active-text\" >Catalog</a> to find more fancy items!</div>\n    ";
       }
     }]);
 

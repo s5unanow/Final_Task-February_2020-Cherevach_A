@@ -409,6 +409,9 @@ span[class^="item__quantity--"] {
 
 
 .bag__empty {
+  text-align: center;
+  margin: 10px 30px;
   font-family: "OpenSans-Bold", sans-serif;
   font-size: 18px;
+  line-height: 1.7;
 }
