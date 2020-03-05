@@ -92,13 +92,13 @@
   <main class="catalog__container-main">
     <section class="filter-mobile filter">
       <ul class="filter__params">
-        <li class="filter__param--fashion filter__param--set">Casual style</li>, <li class="filter__param--product-type">Product type</li>, <li class="filter__param--color">Color</li>, <li class="filter__param--brand filter__param--set">Antipodium</li>, <li class="filter__param--size">UK 18</li>, <li class="filter__param--price">Price range</li>
+        <li class="filter__param--fashion">Fashion</li>, <li class="filter__param--product-type">Product type</li>, <li class="filter__param--color">Color</li>, <li class="filter__param--brand">Brand</li>, <li class="filter__param--size">Size</li>, <li class="filter__param--price">Price range</li>
       </ul>
       <label for="filter__checkbox" class="filter__toggle-btn active-hover"><span class="filter__toggle-icon">⏷</span></label>
       <input type="checkbox" name="filter__checkbox" id="filter__checkbox">
       <div class="filter-mobile__popup">
         <div class="filter-mobile__lists">
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__fashion">
             <div class="filter-mobile__category--type">Fashion</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -110,7 +110,7 @@
               <li class="filter-mobile__value">Classical style</li>
             </ul>
           </div>
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__product-type">
             <div class="filter-mobile__category--type">Product type</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -119,7 +119,7 @@
               <li class="filter-mobile__value">Jersey Tops</li>
             </ul>
           </div>
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__color">
             <div class="filter-mobile__category--type">Color</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -130,7 +130,7 @@
               <li class="filter-mobile__value">Golden</li>
             </ul>
           </div>
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__brand">
             <div class="filter-mobile__category--type">Brand</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -141,7 +141,7 @@
               <li class="filter-mobile__value">River Island</li>
             </ul>
           </div>
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__size">
             <div class="filter-mobile__category--type">Size</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -155,7 +155,7 @@
               <li class="filter-mobile__value">UK 22</li>
             </ul>
           </div>
-          <div class="filter-mobile__category">
+          <div class="filter-mobile__category category__price">
             <div class="filter-mobile__category--type">Price range</div>
             <ul class="filter-mobile__list">
               <li class="filter-mobile__value active-text--black">Not selected</li>
@@ -587,6 +587,6 @@
 <script src="data/catalog.js" defer></script>
 <script src="js/helpers.js" defer></script>
 <script src="js/engine.js" defer></script>
-<script src="js/filter.js" defer></script>
+<script src="js/common.js" defer></script>
 </body>
 </html>

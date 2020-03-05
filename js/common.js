@@ -35,7 +35,6 @@ const DOMMobileFilterCategories = document.querySelectorAll(".filter-mobile__cat
 for (let i = 0; i < DOMMobileFilterCategories.length; i++) {
   let DOMCategory = DOMMobileFilterCategories[i];
   DOMCategory.addEventListener("click", event => {
-    console.log(event.target.className.indexOf("filter-mobile__value"));
     if (event.target.className.indexOf("filter-mobile__value") >= 0) {
       if (event.target.innerText === "Not selected") {
         unsetFilterParams(DOMCategory);
@@ -59,17 +58,55 @@ function unsetFilterParams(DOMCategory) {
 
 function unsetFilterCategoryString(DOMCategory) {
   let category = DOMCategory.querySelector(".filter-mobile__category--type").innerText;
-  let DOMStringCategory = getDOMStringCategory(category);
-  DOMstringCategory.innerText = category;
-  DOMToggleClass(DOMstringCategory, "filter__param--set");
+  let DOMStringParam = getDOMStringParam(DOMCategory);
+  DOMStringParam.innerText = category;
+  DOMRemoveClass(DOMStringParam, "filter__param--set");
+}
+
+function getDOMStringParam(DOMCategory) {
+  let result;
+  let DOMClassNames = DOMCategory.className;
+  let category = DOMClassNames.slice(DOMClassNames.indexOf(" category") + 11);
+  let DOMFilterStringParams = document.querySelectorAll(".filter__params li");
+  for (let i = 0; i < DOMFilterStringParams.length; i++) {
+    console.log(DOMFilterStringParams[i].className.indexOf(category));
+    if (DOMFilterStringParams[i].className.indexOf(category) >= 0) {
+      result = DOMFilterStringParams[i];
+    }
+  }
+  return result
 }
 
 function setFilterCategoryString(DOMCategory, filterValue) {
-
+  let DOMStringParam = getDOMStringParam(DOMCategory);
+  DOMStringParam.innerText = filterValue;
+  DOMAddClass(DOMStringParam, "filter__param--set");
 }
 
-function getDOMStringCategory() {
+function DOMAddClass(DOMElement, targetClassName) {
+  let classNames = DOMElement.className;
+  if (classNames.indexOf(targetClassName) >= 0) {
+    /* do not add same class again */
+  } else {
+    if (classNames === "") {
+      classNames = targetClassName;
+    } else {
+      classNames = classNames + " " + targetClassName;
+    }
+  }
+  DOMElement.className = classNames;
+}
 
+function DOMRemoveClass(DOMElement, targetClassName) {
+  let classNames = DOMElement.className;
+  if (classNames.indexOf(targetClassName) >= 0) {
+    if (classNames.indexOf(targetClassName) === 0) {
+      classNames = classNames.replace(targetClassName, "");
+    } else {
+      classNames = classNames.replace(" " + targetClassName, "");
+    }
+  }
+  DOMElement.className = classNames;
 }
 
 function DOMToggleClass(DOMElement, targetClassName) {
@@ -89,3 +126,20 @@ function DOMToggleClass(DOMElement, targetClassName) {
   }
   DOMElement.className = classNames;
 }
+
+/* photos switcher */
+
+let DOMPreview = document.querySelector("#item__preview");
+let DOMThumbnails = document.querySelectorAll(".item__thumbnail");
+let DOMThumbnailContainers = document.querySelectorAll(".item__thumbnails div");
+
+for (let i = 0; i < DOMThumbnails.length; i++) {
+  DOMThumbnails[i].addEventListener("click", event => {
+    DOMPreview.src = DOMThumbnails[i].src;
+    for (let j = 0; j < DOMThumbnailContainers.length; j++) {
+      DOMRemoveClass(DOMThumbnailContainers[j], "item__thumbnails--show");
+    }
+    DOMAddClass(DOMThumbnailContainers[i], "item__thumbnails--show");
+  });
+}
+

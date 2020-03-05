@@ -39,6 +39,27 @@
   display: flex;
 }
 
+.item__thumbnails div {
+  position: relative;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.item__thumbnails div:hover {
+  opacity: .6;
+}
+
+.item__thumbnails--show::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.18);
+  transition: all .3s;
+}
+
 .item__thumbnail {
   display: block;
   width: 112px;

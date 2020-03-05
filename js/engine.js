@@ -250,8 +250,12 @@ class LayoutBuilder {
   }
   removeDOMItem(DOMItem) {
     DOMItem.remove();
-    this.updateDOMBag();
-    this.updateDOMBagCheckoutSection()
+    if (this.bag.hasItems()) {
+      this.updateDOMBag();
+      this.updateDOMBagCheckoutSection()
+    } else {
+      this.updateDOMBagPageOnEmpty();
+    }
   }
   updateDOMBagPageOnCheckout() {
     let DOMBagMainItems = document.querySelector(".bag-main__items");
