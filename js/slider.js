@@ -9,7 +9,7 @@ class CycledArray {
     return this.array[this.currentIndex];
   }
   moveUp() {
-    if (this.array.length < this.currentIndex + 1) {
+    if (this.currentIndex + 1 >= this.array.length) {
       this.currentIndex = 0
     } else {
       this.currentIndex++;
@@ -32,7 +32,7 @@ class Slider {
     this.itemsRight = new CycledArray(BagItem.createItemsFromID(window.bestOffer.right));
   }
   switchItem(switcherClass) {
-    if (switcherClass.indexOf("best-offer__slide-up--left") >= 0) {
+    if (switcherClass.indexOf("--left") >= 0) {
       this.switchLeftItem(switcherClass);
     } else {
       this.switchRightItem(switcherClass);
@@ -40,36 +40,41 @@ class Slider {
     this.updatePrice();
   }
   switchLeftItem(switcherClass) {
+    let item;
     let DOMItem = document.querySelector(".slider-left");
     if (switcherClass.indexOf("best-offer__slide-up") >= 0) {
-      this.switchLeftItemUp(DOMItem);
+      item = this.itemsLeft.moveUp();
     } else {
-      this.switchLeftItemDown(DOMItem);
+      item = this.itemsLeft.moveDown();
     }
-  }
-  switchLeftItemUp(DOMItem) {
-
-  }
-  switchLeftItemDown(DOMItem) {
-
+    this.updateItem(DOMItem, item.name, item.price, BagItem.getItemImg(item));
   }
   switchRightItem(switcherClass) {
+    let item;
     let DOMItem = document.querySelector(".slider-right");
     if (switcherClass.indexOf("best-offer__slide-up") >= 0) {
-      this.switchRightItemUp(DOMItem);
+      item = this.itemsRight.moveUp();
     } else {
-      this.switchRightItemDown(DOMItem);
+      item = this.itemsRight.moveDown();
     }
+    this.updateItem(DOMItem, item.name, item.price, BagItem.getItemImg(item));
   }
-  switchRightItemUp(DOMItem) {
-
-  }
-  switchRightItemDown(DOMItem) {
-
+  updateItem(DOMItem, name, price, imageURL) {
+    let DOMName = DOMItem.querySelector(".item__name");
+    DOMName.innerText = name;
+    let DOMPrice = DOMItem.querySelector(".item__price");
+    DOMPrice.innerText = "£" + price.toFixed(2);
+    let DOMImg = DOMItem.querySelector(".item__img img");
+    DOMImg.src = "img/" + imageURL;
   }
   updatePrice() {
-    let price = this.itemsLeft.getCurrent().price + this.itemsRight.getCurrent().price;
     let DOMPrice = document.querySelector(".best-offer__old-price");
+    let price = this.itemsLeft.getCurrent().price + this.itemsRight.getCurrent().price;
+    DOMPrice.innerText = "£" + price.toFixed(2);
+
+    let DOMDiscountedPrice = document.querySelector(".best-offer__discount-price");
+    let discountedPrice = price - window.bestOffer.discount;
+    DOMDiscountedPrice.innerText = "£" + discountedPrice.toFixed(2);
   }
   getCurrentItems() {
     let result = [];
@@ -86,6 +91,7 @@ let slider = new Slider();
 let DOMBestOfferBlock = document.querySelector(".best-offer__offer-block");
 
 DOMBestOfferBlock.addEventListener("click", event => {
+  console.log(event.target);
   let DOMSwitcherClassName = event.target.getAttribute("class");
   if (DOMSwitcherClassName.indexOf("best-offer__slide") >= 0) {
     slider.switchItem(DOMSwitcherClassName);

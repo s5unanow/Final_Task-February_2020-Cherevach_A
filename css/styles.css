@@ -344,11 +344,11 @@ hr {
   width: 91%;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   margin: 0 auto;
 }
 
 .best-offer__item {
+  position: relative;
   flex-basis: 33%;
 }
 
@@ -384,6 +384,7 @@ hr {
   padding-bottom: 85px;
   font-family: "Roboto-Bold", sans-serif;
   font-size: 26px;
+  align-self: center;
 }
 
 .best-offer__old-price {
@@ -1178,7 +1179,7 @@ a:hover {
 
   .best-offer__cta {
     position: absolute;
-    bottom: 92px;
+    bottom: 98px;
     right: 0;
   }
 
@@ -1859,4 +1860,14 @@ a:hover {
 
 .item__view-item--hover {
   cursor: pointer;
+}
+
+.item__name--static {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.item__price--static {
+  margin-top: 80px;
 }
