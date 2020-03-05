@@ -1,309 +1,461 @@
 "use strict";
 
-class Bag {
-  constructor() {
-    this.items = [];
-  }
-  initialize() {
-    if (Storage.hasItems()) {
-      this.items = Storage.loadItems();
+function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
+
+function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Bag =
+  /*#__PURE__*/
+  function () {
+    function Bag() {
+      _classCallCheck(this, Bag);
+
+      this.items = [];
     }
-  }
-  hasBestOfferItems() {
-    return BestOffer.includesDiscountedItems(this.items)
-  }
-  hasItems() {
-    return this.items.length > 0
-  }
-  includesItem(itemID) {
-    return this.items.some(item => item.id === itemID)
-  }
-  addItem(item) {
-    if (this.includesItem(item.id)) {
-      this.increaseItemQuantity(item.id)
-    } else {
-      this.items.push(item);
-    }
-    Storage.saveItems(this.items);
-  }
-  addBestOfferItems(items) {
-    items.forEach(item => this.addItem(item));
-    Storage.saveItems(this.items);
-  }
-  increaseItemQuantity(itemID) {
-    let item = this.getItemByID(itemID);
-    item.quantity += 1;
-    Storage.saveItems(this.items);
-  }
-  decreaseItemQuantity(itemID) {
-    let item = this.getItemByID(itemID);
-    item.quantity -= 1;
-    if (item.quantity === 0) {
-      this.removeItem(itemID);
-    }
-    Storage.saveItems(this.items);
-  }
-  getItemByID(itemID) {
-    return this.items.filter(item => item.id === itemID)[0];
-  }
-  removeItem(itemID) {
-    this.items = this.items.filter(item => item.id !== itemID);
-    Storage.saveItems(this.items);
-  }
-  getTotalPrice() {
-    let price = 0;
-    if (this.hasItems()) {
-      price = this.items.reduce((price, item) => price + item.price * item.quantity,
-        0);
-      if (this.hasBestOfferItems()) {
-        price -= BestOffer.getDiscount();
+
+    _createClass(Bag, [{
+      key: "initialize",
+      value: function initialize() {
+        if (Storage.hasItems()) {
+          this.items = Storage.loadItems();
+        }
       }
-    }
-    return price
-  }
-  getItemsQuantity() {
-    let result = 0;
-    if (this.hasItems()) {
-      result = this.items.reduce((totalQuantity, item) => {
-        return totalQuantity + item.quantity
-      }, 0);
-    }
-    return result
-  }
-  getItems() {
-    return this.items
-  }
-  clearBag() {
-    this.items = [];
-    Storage.clearStorage();
-  }
-  getTotalDiscount() {
-    if (this.hasBestOfferItems()) return BestOffer.getDiscount();
-    else return 0
-  }
-  getItemQuantity(itemID) {
-    let result = 0;
-    if (this.includesItem(itemID)) {
-      result = this.getItemByID(itemID).quantity;
-    }
-    return result
-  }
-  static create() {
-    let bag = new Bag();
-    bag.initialize();
-    return bag;
-  }
-}
-
-class EventDispatcher {
-  constructor(bag, layoutBuilder) {
-    this.bag = bag;
-    this.layoutBuilder = layoutBuilder;
-  }
-  addBestOfferItems(items) {
-    this.bag.addBestOfferItems(items);
-    layoutBuilder.updateDOMBag()
-  }
-  addItemToBag() {
-    let id = document.querySelector(".section-item").id;
-    let color = this.getItemColor();
-    let size = this.getItemSize();
-    let item = BagItem.createItem(id, color, size);
-    this.bag.addItem(item);
-    this.layoutBuilder.updateDOMBag();
-  }
-  getItemSize() {
-    let result = null;
-    let DOMSizes = document.querySelectorAll(".parameter__sizes input");
-    for (let DOMSize of DOMSizes) {
-      if (DOMSize.checked) result = DOMSize.id
-    }
-    return result
-  }
-  getItemColor() {
-    let result = null;
-    let DOMColors = document.querySelectorAll(".parameter__colors input");
-    for (let DOMColor of DOMColors) {
-      if (DOMColor.checked) result = DOMColor.id
-    }
-    return result
-  }
-  addBagListeners() {
-    this.addEmptyBagListener();
-    this.addChangeQuantityListeners();
-    this.addRemoveItemListeners();
-    this.addCheckoutListener();
-  }
-  addChangeQuantityListeners() {
-    let DOMItems = document.querySelectorAll(".bag-main__item");
-    for (let i = 0; i < DOMItems.length; i++) {
-      DOMItems[i].addEventListener("click", event => {
-        if (event.target.className === "item__quantity--decrement") {
-          this.bag.decreaseItemQuantity(DOMItems[i].id);
-          this.layoutBuilder.updateDOMItemQuantity(DOMItems[i]);
-        }
-        if (event.target.className === "item__quantity--increment") {
-          this.bag.increaseItemQuantity(DOMItems[i].id);
-          this.layoutBuilder.updateDOMItemQuantity(DOMItems[i]);
-        }
-      });
-    }
-  }
-  addRemoveItemListeners() {
-    let DOMItems = document.querySelectorAll(".bag-main__item");
-    for (let i = 0; i < DOMItems.length; i++) {
-      DOMItems[i].addEventListener("click", event => {
-        if (event.target.className === "item__remove-btn") {
-          this.bag.removeItem(DOMItems[i].id);
-          this.layoutBuilder.removeDOMItem(DOMItems[i]);
-        }
-      });
-    }
-  }
-  addEmptyBagListener() {
-    let emptyBagBtn = document.querySelector(".checkout__empty-bag");
-    emptyBagBtn.addEventListener("click", () => {
-      this.bag.clearBag();
-      this.layoutBuilder.updateDOMBagPageOnEmpty();
-    });
-  }
-  addCheckoutListener() {
-    let checkoutBtn = document.querySelector(".checkout__btn");
-    checkoutBtn.addEventListener("click", () => {
-      if (this.bag.hasItems()) {
-        this.bag.clearBag();
-        this.layoutBuilder.updateDOMBagPageOnCheckout();
+    }, {
+      key: "hasBestOfferItems",
+      value: function hasBestOfferItems() {
+        return BestOffer.includesDiscountedItems(this.items);
       }
-    });
-  }
-}
+    }, {
+      key: "hasItems",
+      value: function hasItems() {
+        return this.items.length > 0;
+      }
+    }, {
+      key: "includesItem",
+      value: function includesItem(itemID) {
+        return this.items.some(function (item) {
+          return item.id === itemID;
+        });
+      }
+    }, {
+      key: "addItem",
+      value: function addItem(item) {
+        if (this.includesItem(item.id)) {
+          this.increaseItemQuantity(item.id);
+        } else {
+          this.items.push(item);
+        }
 
-class LayoutBuilder {
-  constructor(bag) {
-    this.bag = bag;
-    this.DOMbag = document.getElementsByClassName("header__bag")[0];
+        Storage.saveItems(this.items);
+      }
+    }, {
+      key: "addBestOfferItems",
+      value: function addBestOfferItems(items) {
+        var _this = this;
 
-  }
-  updateDOMBag() {
-    let quantity = this.bag.getItemsQuantity();
-    this.DOMbag.querySelector(".bag__quantity").innerText = quantity;
+        items.forEach(function (item) {
+          return _this.addItem(item);
+        });
+        Storage.saveItems(this.items);
+      }
+    }, {
+      key: "increaseItemQuantity",
+      value: function increaseItemQuantity(itemID) {
+        var item = this.getItemByID(itemID);
+        item.quantity += 1;
+        Storage.saveItems(this.items);
+      }
+    }, {
+      key: "decreaseItemQuantity",
+      value: function decreaseItemQuantity(itemID) {
+        var item = this.getItemByID(itemID);
+        item.quantity -= 1;
 
-    let totalPrice = "£" + this.getFormattedTotalPrice();
-    if (quantity === 0) {
-      this.DOMbag.querySelector(".bag__price").innerText = "";
-    } else {
-      this.DOMbag.querySelector(".bag__price").innerText = totalPrice;
-    }
-  }
-  buildDOMCatalog(catalogItems) {
-    let PromoLastWeekendItems = document.querySelector(".promo-last-weekend__items");
-    let DOMData = "";
-    for (let i = 0; i < 4; i++) {
-      DOMData += DOMTemplates.generateCatalogPromoItemTemplate(catalogItems[i]);
-    }
-    PromoLastWeekendItems.innerHTML = DOMData;
+        if (item.quantity === 0) {
+          this.removeItem(itemID);
+        }
 
-    DOMData = "";
-    let DOMCatalogMainItems = document.querySelector(".catalog-main__items");
-    for (let i = 4; i < catalogItems.length; i++) {
-      DOMData += DOMTemplates.generateCatalogMainItemTemplate(catalogItems[i]);
-    }
-    DOMCatalogMainItems.innerHTML = DOMData;
-  }
-  buildDOMBagPage() {
-    this.buildDOMBagItemsSection();
-    this.updateDOMBagCheckoutSection();
-  }
-  buildDOMBagItemsSection() {
-    let DOMBagMainItems = document.querySelector(".bag-main__items");
-    let DOMData = "";
-    if (this.bag.hasItems()) {
-      let items = this.bag.getItems();
-      items.forEach(item => {
-        DOMData += DOMTemplates.generateBagItemTemplate(item);
-      });
-    }
-    else {
-      DOMData = DOMTemplates.generateEmptyBagTemplate();
-    }
-    DOMBagMainItems.innerHTML = DOMData;
-  }
-  updateDOMBagCheckoutSection() {
-    let DOMBagCheckout = document.querySelector(".section__checkout");
-    DOMBagCheckout.innerHTML = DOMTemplates.generateBagCheckout(this.getFormattedTotalPrice(), this.bag.getTotalDiscount());
-  }
-  updateDOMBagPageOnEmpty() {
-    let DOMBagMainItems = document.querySelector(".bag-main__items");
-    DOMBagMainItems.innerHTML = DOMTemplates.generateEmptyBagTemplate();
-    this.updateDOMBag();
-    this.updateDOMBagCheckoutSection();
-  }
-  getFormattedTotalPrice() {
-    let totalPrice = this.bag.getTotalPrice();
-    if (totalPrice > 0) return totalPrice.toFixed(2);
-    else return totalPrice
-  }
-  updateDOMItemQuantity(DOMItem) {
-    let itemQuantity = this.bag.getItemQuantity(DOMItem.id);
-    if (itemQuantity === 0) this.removeDOMItem(DOMItem);
-    else {
-      let DOMItemQuantity = DOMItem.querySelector(".item__data--quantity");
-      DOMItemQuantity.innerText = itemQuantity;
-    }
-    this.updateDOMBag();
-    this.updateDOMBagCheckoutSection()
-  }
-  removeDOMItem(DOMItem) {
-    DOMItem.remove();
-    if (this.bag.hasItems()) {
-      this.updateDOMBag();
-      this.updateDOMBagCheckoutSection()
-    } else {
-      this.updateDOMBagPageOnEmpty();
-    }
-  }
-  updateDOMBagPageOnCheckout() {
-    let DOMBagMainItems = document.querySelector(".bag-main__items");
-    console.log(DOMTemplates.generateCheckoutTemplate());
-    DOMBagMainItems.innerHTML = DOMTemplates.generateCheckoutTemplate();
-    this.updateDOMBag();
-    this.updateDOMBagCheckoutSection();
-  }
-}
+        Storage.saveItems(this.items);
+      }
+    }, {
+      key: "getItemByID",
+      value: function getItemByID(itemID) {
+        return this.items.filter(function (item) {
+          return item.id === itemID;
+        })[0];
+      }
+    }, {
+      key: "removeItem",
+      value: function removeItem(itemID) {
+        this.items = this.items.filter(function (item) {
+          return item.id !== itemID;
+        });
+        Storage.saveItems(this.items);
+      }
+    }, {
+      key: "getTotalPrice",
+      value: function getTotalPrice() {
+        var price = 0;
 
-let filteredCatalogItems = window.catalog.filter(catalogItem => {
-  return catalogItem.category === "women" && catalogItem.fashion === "Casual style"
+        if (this.hasItems()) {
+          price = this.items.reduce(function (price, item) {
+            return price + item.price * item.quantity;
+          }, 0);
+
+          if (this.hasBestOfferItems()) {
+            price -= BestOffer.getDiscount();
+          }
+        }
+
+        return price;
+      }
+    }, {
+      key: "getItemsQuantity",
+      value: function getItemsQuantity() {
+        var result = 0;
+
+        if (this.hasItems()) {
+          result = this.items.reduce(function (totalQuantity, item) {
+            return totalQuantity + item.quantity;
+          }, 0);
+        }
+
+        return result;
+      }
+    }, {
+      key: "getItems",
+      value: function getItems() {
+        return this.items;
+      }
+    }, {
+      key: "clearBag",
+      value: function clearBag() {
+        this.items = [];
+        Storage.clearStorage();
+      }
+    }, {
+      key: "getTotalDiscount",
+      value: function getTotalDiscount() {
+        if (this.hasBestOfferItems()) return BestOffer.getDiscount();else return 0;
+      }
+    }, {
+      key: "getItemQuantity",
+      value: function getItemQuantity(itemID) {
+        var result = 0;
+
+        if (this.includesItem(itemID)) {
+          result = this.getItemByID(itemID).quantity;
+        }
+
+        return result;
+      }
+    }], [{
+      key: "create",
+      value: function create() {
+        var bag = new Bag();
+        bag.initialize();
+        return bag;
+      }
+    }]);
+
+    return Bag;
+  }();
+
+var EventDispatcher =
+  /*#__PURE__*/
+  function () {
+    function EventDispatcher(bag, layoutBuilder) {
+      _classCallCheck(this, EventDispatcher);
+
+      this.bag = bag;
+      this.layoutBuilder = layoutBuilder;
+    }
+
+    _createClass(EventDispatcher, [{
+      key: "addBestOfferItems",
+      value: function addBestOfferItems(items) {
+        this.bag.addBestOfferItems(items);
+        layoutBuilder.updateDOMBag();
+      }
+    }, {
+      key: "addItemToBag",
+      value: function addItemToBag() {
+        var id = document.querySelector(".section-item").id;
+        var color = this.getItemColor();
+        var size = this.getItemSize();
+        var item = BagItem.createItem(id, color, size);
+        this.bag.addItem(item);
+        this.layoutBuilder.updateDOMBag();
+      }
+    }, {
+      key: "getItemSize",
+      value: function getItemSize() {
+        var result = null;
+        var DOMSizes = document.querySelectorAll(".parameter__sizes input");
+
+        for (var i = 0; i < DOMSizes.length; i++) {
+          if (DOMSizes[i].checked) result = DOMSizes[i].id;
+        }
+
+        return result;
+      }
+    }, {
+      key: "getItemColor",
+      value: function getItemColor() {
+        var result = null;
+        var DOMColors = document.querySelectorAll(".parameter__colors input");
+
+        for (var i = 0; i < DOMColors.length; i++) {
+          if (DOMColors[i].checked) result = DOMColors[i].id;
+        }
+
+        return result;
+      }
+    }, {
+      key: "addBagListeners",
+      value: function addBagListeners() {
+        this.addEmptyBagListener();
+        this.addChangeQuantityListeners();
+        this.addRemoveItemListeners();
+        this.addCheckoutListener();
+      }
+    }, {
+      key: "addChangeQuantityListeners",
+      value: function addChangeQuantityListeners() {
+        var _this2 = this;
+
+        var DOMItems = document.querySelectorAll(".bag-main__item");
+
+        var _loop = function _loop(i) {
+          DOMItems[i].addEventListener("click", function (event) {
+            if (event.target.className === "item__quantity--decrement") {
+              _this2.bag.decreaseItemQuantity(DOMItems[i].id);
+
+              _this2.layoutBuilder.updateDOMItemQuantity(DOMItems[i]);
+            }
+
+            if (event.target.className === "item__quantity--increment") {
+              _this2.bag.increaseItemQuantity(DOMItems[i].id);
+
+              _this2.layoutBuilder.updateDOMItemQuantity(DOMItems[i]);
+            }
+          });
+        };
+
+        for (var i = 0; i < DOMItems.length; i++) {
+          _loop(i);
+        }
+      }
+    }, {
+      key: "addRemoveItemListeners",
+      value: function addRemoveItemListeners() {
+        var _this3 = this;
+
+        var DOMItems = document.querySelectorAll(".bag-main__item");
+
+        var _loop2 = function _loop2(i) {
+          DOMItems[i].addEventListener("click", function (event) {
+            if (event.target.className === "item__remove-btn") {
+              _this3.bag.removeItem(DOMItems[i].id);
+
+              _this3.layoutBuilder.removeDOMItem(DOMItems[i]);
+            }
+          });
+        };
+
+        for (var i = 0; i < DOMItems.length; i++) {
+          _loop2(i);
+        }
+      }
+    }, {
+      key: "addEmptyBagListener",
+      value: function addEmptyBagListener() {
+        var _this4 = this;
+
+        var emptyBagBtn = document.querySelector(".checkout__empty-bag");
+        emptyBagBtn.addEventListener("click", function () {
+          _this4.bag.clearBag();
+
+          _this4.layoutBuilder.updateDOMBagPageOnEmpty();
+        });
+      }
+    }, {
+      key: "addCheckoutListener",
+      value: function addCheckoutListener() {
+        var _this5 = this;
+
+        var checkoutBtn = document.querySelector(".checkout__btn");
+        checkoutBtn.addEventListener("click", function () {
+          if (_this5.bag.hasItems()) {
+            _this5.bag.clearBag();
+
+            _this5.layoutBuilder.updateDOMBagPageOnCheckout();
+          }
+        });
+      }
+    }]);
+
+    return EventDispatcher;
+  }();
+
+var LayoutBuilder =
+  /*#__PURE__*/
+  function () {
+    function LayoutBuilder(bag) {
+      _classCallCheck(this, LayoutBuilder);
+
+      this.bag = bag;
+      this.DOMbag = document.getElementsByClassName("header__bag")[0];
+    }
+
+    _createClass(LayoutBuilder, [{
+      key: "updateDOMBag",
+      value: function updateDOMBag() {
+        var quantity = this.bag.getItemsQuantity();
+        this.DOMbag.querySelector(".bag__quantity").innerText = quantity;
+        var totalPrice = "£" + this.getFormattedTotalPrice();
+
+        if (quantity === 0) {
+          this.DOMbag.querySelector(".bag__price").innerText = "";
+        } else {
+          this.DOMbag.querySelector(".bag__price").innerText = totalPrice;
+        }
+      }
+    }, {
+      key: "buildDOMCatalog",
+      value: function buildDOMCatalog(catalogItems) {
+        var PromoLastWeekendItems = document.querySelector(".promo-last-weekend__items");
+        var DOMData = "";
+
+        for (var i = 0; i < 4; i++) {
+          DOMData += DOMTemplates.generateCatalogPromoItemTemplate(catalogItems[i]);
+        }
+
+        PromoLastWeekendItems.innerHTML = DOMData;
+        DOMData = "";
+        var DOMCatalogMainItems = document.querySelector(".catalog-main__items");
+
+        for (var _i = 4; _i < catalogItems.length; _i++) {
+          DOMData += DOMTemplates.generateCatalogMainItemTemplate(catalogItems[_i]);
+        }
+
+        DOMCatalogMainItems.innerHTML = DOMData;
+      }
+    }, {
+      key: "buildDOMBagPage",
+      value: function buildDOMBagPage() {
+        this.buildDOMBagItemsSection();
+        this.updateDOMBagCheckoutSection();
+      }
+    }, {
+      key: "buildDOMBagItemsSection",
+      value: function buildDOMBagItemsSection() {
+        var DOMBagMainItems = document.querySelector(".bag-main__items");
+        var DOMData = "";
+
+        if (this.bag.hasItems()) {
+          var items = this.bag.getItems();
+          items.forEach(function (item) {
+            DOMData += DOMTemplates.generateBagItemTemplate(item);
+          });
+        } else {
+          DOMData = DOMTemplates.generateEmptyBagTemplate();
+        }
+
+        DOMBagMainItems.innerHTML = DOMData;
+      }
+    }, {
+      key: "updateDOMBagCheckoutSection",
+      value: function updateDOMBagCheckoutSection() {
+        var DOMBagCheckout = document.querySelector(".checkout__price");
+        DOMBagCheckout.innerHTML = DOMTemplates.generateBagCheckout(this.getFormattedTotalPrice(), this.bag.getTotalDiscount());
+      }
+    }, {
+      key: "updateDOMBagPageOnEmpty",
+      value: function updateDOMBagPageOnEmpty() {
+        var DOMBagMainItems = document.querySelector(".bag-main__items");
+        DOMBagMainItems.innerHTML = DOMTemplates.generateEmptyBagTemplate();
+        this.updateDOMBag();
+        this.updateDOMBagCheckoutSection();
+      }
+    }, {
+      key: "getFormattedTotalPrice",
+      value: function getFormattedTotalPrice() {
+        var totalPrice = this.bag.getTotalPrice();
+        if (totalPrice > 0) return totalPrice.toFixed(2);else return totalPrice;
+      }
+    }, {
+      key: "updateDOMItemQuantity",
+      value: function updateDOMItemQuantity(DOMItem) {
+        var itemQuantity = this.bag.getItemQuantity(DOMItem.id);
+        if (itemQuantity === 0) this.removeDOMItem(DOMItem);else {
+          var DOMItemQuantity = DOMItem.querySelector(".item__data--quantity");
+          DOMItemQuantity.innerText = itemQuantity;
+        }
+        this.updateDOMBag();
+        this.updateDOMBagCheckoutSection();
+      }
+    }, {
+      key: "removeDOMItem",
+      value: function removeDOMItem(DOMItem) {
+        DOMItem.parentNode.removeChild(DOMItem);
+
+        if (this.bag.hasItems()) {
+          this.updateDOMBag();
+          this.updateDOMBagCheckoutSection();
+        } else {
+          this.updateDOMBagPageOnEmpty();
+        }
+      }
+    }, {
+      key: "updateDOMBagPageOnCheckout",
+      value: function updateDOMBagPageOnCheckout() {
+        var DOMBagMainItems = document.querySelector(".bag-main__items");
+        DOMBagMainItems.innerHTML = DOMTemplates.generateCheckoutTemplate();
+        this.updateDOMBag();
+        this.updateDOMBagCheckoutSection();
+      }
+    }]);
+
+    return LayoutBuilder;
+  }();
+
+var filteredCatalogItems = window.catalog.filter(function (catalogItem) {
+  return catalogItem.category === "women" && catalogItem.fashion === "Casual style";
 });
-filteredCatalogItems.sort((item1, item2) => {
-  return Date.parse(item1.dateAdded) - Date.parse(item2.dateAdded)
+filteredCatalogItems.sort(function (item1, item2) {
+  return Date.parse(item1.dateAdded) - Date.parse(item2.dateAdded);
 });
-
-
-const currentPage = document.getElementsByTagName("title")[0].innerText;
-const bag = Bag.create();
-const layoutBuilder = new LayoutBuilder(bag);
-const dispatcher = new EventDispatcher(bag, layoutBuilder);
-
+var currentPage = document.getElementsByTagName("title")[0].innerText;
+var bag = Bag.create();
+var layoutBuilder = new LayoutBuilder(bag);
+var dispatcher = new EventDispatcher(bag, layoutBuilder);
 layoutBuilder.updateDOMBag();
 
-if (currentPage.includes("Start")) {
-  let buyBestOfferBtn = document.querySelector(".best-offer__btn");
-  buyBestOfferBtn.addEventListener("click", event => {
-    let items = slider.getCurrentItems();
+if (currentPage.indexOf("Start") >= 0) {
+  var buyBestOfferBtn = document.querySelector(".best-offer__btn");
+  buyBestOfferBtn.addEventListener("click", function (event) {
+    var items = slider.getCurrentItems();
     dispatcher.addBestOfferItems(items);
   });
 }
-if (currentPage.includes("Catalog")) {
+
+if (currentPage.indexOf("Catalog") >= 0) {
   layoutBuilder.buildDOMCatalog(filteredCatalogItems);
 }
-if (currentPage.includes("Item")) {
-  let buyBtn = document.querySelector(".item-buy__btn");
-  buyBtn.addEventListener("click", event => {
+
+if (currentPage.indexOf("Item") >= 0) {
+  var buyBtn = document.querySelector(".item-buy__btn");
+  buyBtn.addEventListener("click", function (event) {
     dispatcher.addItemToBag();
   });
 }
-if (currentPage.includes("Shopping")) {
+
+if (currentPage.indexOf("Shopping") >= 0) {
   layoutBuilder.buildDOMBagPage();
   dispatcher.addBagListeners();
 }
-

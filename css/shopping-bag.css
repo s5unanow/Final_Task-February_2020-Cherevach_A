@@ -406,3 +406,9 @@ span[class^="item__quantity--"] {
      width: 100%;
   }
 }
+
+
+.bag__empty {
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 18px;
+}

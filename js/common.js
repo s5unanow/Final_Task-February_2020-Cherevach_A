@@ -1,40 +1,44 @@
 "use strict";
-
 /* desktop filter */
-const DOMDesktopFilterCategories = document.querySelectorAll(".filter__category");
 
-for (let i = 0; i < DOMDesktopFilterCategories.length; i++) {
-  let DOMCategory = DOMDesktopFilterCategories[i];
-  DOMCategory.addEventListener("click", event => {
+var DOMDesktopFilterCategories = document.querySelectorAll(".filter__category");
+
+var _loop = function _loop(i) {
+  var DOMCategory = DOMDesktopFilterCategories[i];
+  DOMCategory.addEventListener("click", function (event) {
     if (event.target.className === "filter__value") {
       if (event.target.innerText === "Not selected") {
         unsetFilter(DOMCategory);
       } else {
-        let filterValue = event.target.innerText;
+        var filterValue = event.target.innerText;
         setFilter(DOMCategory, filterValue);
       }
     }
   });
+};
+
+for (var i = 0; i < DOMDesktopFilterCategories.length; i++) {
+  _loop(i);
 }
 
 function unsetFilter(DOMCategory) {
   DOMCategory.querySelector(".filter__category--set").className = "filter__category--set filter__category--hidden";
 }
+
 function setFilter(DOMCategory, filterValue) {
-  let DOMSetFilter = DOMCategory.querySelector(".filter__category--set");
-  let DOMValue = DOMSetFilter.querySelector(".filter__category--value");
+  var DOMSetFilter = DOMCategory.querySelector(".filter__category--set");
+  var DOMValue = DOMSetFilter.querySelector(".filter__category--value");
   DOMValue.innerText = filterValue;
   DOMSetFilter.className = "filter__category--set";
 }
-
-
 /* mobile-tablet filter */
 
-const DOMMobileFilterCategories = document.querySelectorAll(".filter-mobile__category");
 
-for (let i = 0; i < DOMMobileFilterCategories.length; i++) {
-  let DOMCategory = DOMMobileFilterCategories[i];
-  DOMCategory.addEventListener("click", event => {
+var DOMMobileFilterCategories = document.querySelectorAll(".filter-mobile__category");
+
+var _loop2 = function _loop2(_i) {
+  var DOMCategory = DOMMobileFilterCategories[_i];
+  DOMCategory.addEventListener("click", function (event) {
     if (event.target.className.indexOf("filter-mobile__value") >= 0) {
       if (event.target.innerText === "Not selected") {
         unsetFilterParams(DOMCategory);
@@ -47,55 +51,68 @@ for (let i = 0; i < DOMMobileFilterCategories.length; i++) {
       }
     }
   });
+};
+
+for (var _i = 0; _i < DOMMobileFilterCategories.length; _i++) {
+  _loop2(_i);
 }
 
 function unsetFilterParams(DOMCategory) {
-  let DOMFilterParams = DOMCategory.querySelectorAll(".filter-mobile__value");
-  for (let i = 0; i < DOMFilterParams.length; i++) {
-    DOMFilterParams[i].className = "filter-mobile__value";
+  var DOMFilterParams = DOMCategory.querySelectorAll(".filter-mobile__value");
+
+  for (var _i2 = 0; _i2 < DOMFilterParams.length; _i2++) {
+    DOMFilterParams[_i2].className = "filter-mobile__value";
   }
 }
 
 function unsetFilterCategoryString(DOMCategory) {
-  let category = DOMCategory.querySelector(".filter-mobile__category--type").innerText;
-  let DOMStringParam = getDOMStringParam(DOMCategory);
+  var category = DOMCategory.querySelector(".filter-mobile__category--type").innerText;
+  var DOMStringParam = getDOMStringParam(DOMCategory);
   DOMStringParam.innerText = category;
   DOMRemoveClass(DOMStringParam, "filter__param--set");
 }
 
 function getDOMStringParam(DOMCategory) {
-  let result;
-  let DOMClassNames = DOMCategory.className;
-  let category = DOMClassNames.slice(DOMClassNames.indexOf(" category") + 11);
-  let DOMFilterStringParams = document.querySelectorAll(".filter__params li");
-  for (let i = 0; i < DOMFilterStringParams.length; i++) {
-    console.log(DOMFilterStringParams[i].className.indexOf(category));
-    if (DOMFilterStringParams[i].className.indexOf(category) >= 0) {
-      result = DOMFilterStringParams[i];
+  var result;
+  var DOMClassNames = DOMCategory.className;
+  var category = DOMClassNames.slice(DOMClassNames.indexOf(" category") + 11);
+  var DOMFilterStringParams = document.querySelectorAll(".filter__params li");
+
+  for (var _i3 = 0; _i3 < DOMFilterStringParams.length; _i3++) {
+    console.log(DOMFilterStringParams[_i3].className.indexOf(category));
+
+    if (DOMFilterStringParams[_i3].className.indexOf(category) >= 0) {
+      result = DOMFilterStringParams[_i3];
     }
   }
-  return result
+
+  return result;
 }
 
 function setFilterCategoryString(DOMCategory, filterValue) {
-  let DOMStringParam = getDOMStringParam(DOMCategory);
+  var DOMStringParam = getDOMStringParam(DOMCategory);
   DOMStringParam.innerText = filterValue;
   DOMAddClass(DOMStringParam, "filter__param--set");
 }
-
 /* photos switcher */
 
-let DOMPreview = document.querySelector("#item__preview");
-let DOMThumbnails = document.querySelectorAll(".item__thumbnail");
-let DOMThumbnailContainers = document.querySelectorAll(".item__thumbnails div");
 
-for (let i = 0; i < DOMThumbnails.length; i++) {
-  DOMThumbnails[i].addEventListener("click", event => {
-    DOMPreview.src = DOMThumbnails[i].src;
-    for (let j = 0; j < DOMThumbnailContainers.length; j++) {
+var DOMPreview = document.querySelector("#item__preview");
+var DOMThumbnails = document.querySelectorAll(".item__thumbnail");
+var DOMThumbnailContainers = document.querySelectorAll(".item__thumbnails div");
+
+var _loop3 = function _loop3(_i4) {
+  DOMThumbnails[_i4].addEventListener("click", function (event) {
+    DOMPreview.src = DOMThumbnails[_i4].src;
+
+    for (var j = 0; j < DOMThumbnailContainers.length; j++) {
       DOMRemoveClass(DOMThumbnailContainers[j], "item__thumbnails--show");
     }
-    DOMAddClass(DOMThumbnailContainers[i], "item__thumbnails--show");
-  });
-}
 
+    DOMAddClass(DOMThumbnailContainers[_i4], "item__thumbnails--show");
+  });
+};
+
+for (var _i4 = 0; _i4 < DOMThumbnails.length; _i4++) {
+  _loop3(_i4);
+}
