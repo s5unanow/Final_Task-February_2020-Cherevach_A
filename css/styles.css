@@ -220,6 +220,26 @@ a {
   background: black;
 }
 
+#nav__checkbox:checked ~ label .toggle__icon {
+  background: transparent;
+}
+
+#nav__checkbox:checked ~ label .toggle__icon::before {
+  background: #f14a58;
+  transform: rotate(45deg) translateY(7px);
+  width: 23px;
+  border-radius: 4px;
+  height: 3px;
+}
+
+#nav__checkbox:checked ~ label .toggle__icon::after {
+  transform: rotate(-45deg) translateY(-7px);
+  width: 23px;
+  background: #f14a58;
+  border-radius: 4px;
+  height: 3px;
+}
+
 .header-nav {
   position: fixed;
   left: 0;
